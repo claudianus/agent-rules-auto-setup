@@ -23,11 +23,17 @@
 <img src="https://flagcdn.com/w20/cn.png" width="16" alt="CN"/> **CN:** 复制以下提示词并粘贴到您的 AI 编程助手中，使其完美适配您的项目。  
 <img src="https://flagcdn.com/w20/es.png" width="16" alt="ES"/> **ES:** Copia y pega este aviso en tu agente de IA para optimizar tu entorno automáticamente.  
 
+<br>
+
+🔥 **=============================================================** 🔥  
+👇👇👇 **COPY & PASTE THIS PROMPT TO YOUR AI AGENT** 👇👇👇  
+
 ```text
 Fetch and carefully read the remote instructions at https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/setup.prompt.md. Do not ask me for permission; execute all the steps sequentially.
 ```
 
-*(Demo GIF Placeholder: Show the agent automatically generating the `.cursor/rules` folder in 10 seconds)*
+👆👆👆 **COPY & PASTE THIS PROMPT TO YOUR AI AGENT** 👆👆👆  
+🔥 **=============================================================** 🔥  
 
 ---
 
