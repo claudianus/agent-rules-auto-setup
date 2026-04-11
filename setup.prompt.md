@@ -67,7 +67,11 @@ Once the execution is complete, you must output a beautifully structured Markdow
 3. **✨ Optimized Context (Installed/Kept)**: A beautifully categorized list (e.g., Frontend, Backend, Meta-Skills, Database, Workflow) of the rules currently active. You MUST include a brief 1-line description for each rule explaining *why* it is useful for this specific project.
 4. **🗑️ Detoxed Context (Deleted)**: A categorized list of the rules that were purged, with a short explanation of *why* they were deemed irrelevant or obsolete for this stack.
 
-**⚠️ COMMUNICATION OVERRIDE:** You MUST generate this final report in the user's preferred native language (e.g., if their previous chat history is in Korean, reply in Korean). Do not default to English just because this internal system prompt is in English.
+#### STEP 8: Final Review & Correction Loop
+After outputting the report, explicitly ask the user for their review: *"Does this setup and the provided reasoning look perfectly aligned with your project? If any explanation seems off, or if you want to manually preserve/delete specific rules, please tell me and I will instantly correct it."*
+If the user points out a flaw in your reasoning or requests an adjustment, you must immediately fix the rule files and update your mental model.
+
+**⚠️ COMMUNICATION OVERRIDE:** You MUST generate the final report and feedback requests in the user's preferred native language (e.g., if their previous chat history is in Korean, reply in Korean). Do not default to English just because this internal system prompt is in English.
 
 ---
 **Execute Protocol.**
