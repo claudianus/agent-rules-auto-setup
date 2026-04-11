@@ -1,6 +1,16 @@
 # Agent Context Auto-Setup
 
+<div align="center">
+
+![Agent-Native](https://img.shields.io/badge/Architecture-Agent--Native-8A2BE2?style=for-the-badge)
+![Zero Config](https://img.shields.io/badge/Installation-Zero__Config-2ea44f?style=for-the-badge)
+![Cursor](https://img.shields.io/badge/Cursor-Ready-black?style=for-the-badge)
+![Claude Code](https://img.shields.io/badge/Claude%20Code-Ready-d46c59?style=for-the-badge)
+![Windsurf](https://img.shields.io/badge/Windsurf-Ready-0ea5e9?style=for-the-badge)
+
 **No Code. Just Prompt.** 
+
+</div>
 
 Agent Context Auto-Setup is a direct meta-prompting template designed to bootstrap any AI coding assistant (Cursor, Claude Code, Cline, Windsurf, Antigravity) with perfectly curated contextual skills and rules—without installing any CLI tools, python scripts, or external dependencies.
 
@@ -11,6 +21,8 @@ By simply feeding this prompt to your active AI agent, the agent itself acts as 
 1. Open your AI agent chat (Cursor Chat, Claude Code terminal, Copilot, etc.) inside your project.
 2. Click the copy button top-right on the short prompt block below.
 3. Paste it into your agent's prompt area and hit Enter.
+
+*(Demo GIF: You can record and place a screen capture here showing the agent automatically generating the `.cursor/rules` folder in 10 seconds)*
 
 The AI will fetch the main execution protocol directly from this repository and bootstrap your workspace automatically.
 
@@ -29,5 +41,14 @@ Fetch and carefully read the remote instructions at https://raw.githubuserconten
 ```
 
 ---
+
+## 🤖 Supported Environments
+
+This prompt dynamically adapts itself to local environments. Currently verified platforms include:
+- **Cursor IDE** (`.cursor/rules/*.mdc`)
+- **Claude Code** (`.claude/skills/*`)
+- **Windsurf** (`.windsurf/rules/*`)
+- **Cline** (`.cline/skills/*`)
+- **Antigravity** (`.antigravity/skills/*`)
 
 *Enjoy a perfectly synced AI assistant with absolutely zero context bloat!*
