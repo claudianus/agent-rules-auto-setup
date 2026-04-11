@@ -12,11 +12,11 @@
 
 ## 🧙‍♂️ The One-Line Setup Prompt
 
-🇺🇸 **EN:** Copy & paste this prompt to your AI coding agent (Cursor/Claude) to make it instantly smarter.  
-🇰🇷 **KR:** 아래 프롬프트를 복사하여 AI 에이전트에 붙여넣기만 하면 최고의 설정이 자동 완료됩니다.  
-🇯🇵 **JP:** 下記のプロンプトをコピーして、AIコーディングアシスタントに貼り付けてください。  
-🇨🇳 **CN:** 复制以下提示词并粘贴到您的 AI 编程助手中，使其完美适配您的项目。  
-🇪🇸 **ES:** Copia y pega este aviso en tu agente de IA para optimizar tu entorno automáticamente.  
+<img src="https://flagcdn.com/w20/us.png" width="16" alt="US"/> **EN:** Copy & paste this prompt to your AI coding agent (Cursor/Claude) to make it instantly smarter.  
+<img src="https://flagcdn.com/w20/kr.png" width="16" alt="KR"/> **KR:** 아래 프롬프트를 복사하여 AI 에이전트에 붙여넣기만 하면 최고의 설정이 자동 완료됩니다.  
+<img src="https://flagcdn.com/w20/jp.png" width="16" alt="JP"/> **JP:** 下記のプロンプトをコピーして、AIコーディングアシスタントに貼り付けてください。  
+<img src="https://flagcdn.com/w20/cn.png" width="16" alt="CN"/> **CN:** 复制以下提示词并粘贴到您的 AI 编程助手中，使其完美适配您的项目。  
+<img src="https://flagcdn.com/w20/es.png" width="16" alt="ES"/> **ES:** Copia y pega este aviso en tu agente de IA para optimizar tu entorno automáticamente.  
 
 ```text
 Fetch and carefully read the remote instructions at https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/setup.prompt.md. Do not ask me for permission; execute all the steps sequentially.
