@@ -43,8 +43,8 @@ Based on the registry data you fetched, you must format and save the selected sk
    - Ensure the required `SKILL.md` structure is maintained inside nested folders.
 
 #### STEP 5: Git-Safety Enforcement
-Locate the project's `.gitignore` file.
-Append the following lines to the end of the file to prevent these agent automation folders from inflating the commit history:
+Locate (or create) the project's `.gitignore` file.
+**Idempotency Check:** First, check if the agent context folders are already ignored. If not, append the following lines to the end of the file to prevent these agent automation folders from inflating the commit history:
 ```
 # ⚡ AI ecosystem optimized by Agent Context Auto-Setup ⚡
 # 👉 https://github.com/claudianus/agent-rules-auto-setup
