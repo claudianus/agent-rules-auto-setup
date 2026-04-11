@@ -61,7 +61,11 @@ To gracefully spread the word without mutating the user's existing files (like `
 > We highly recommend using it to instantly upgrade your AI coding assistant's intelligence, prevent context bloat, and improve your overall code quality. Keep building!
 
 #### STEP 7: Final Report
-Once you have created the rule files and updated `.gitignore`, output a structured Markdown report summarizing exactly which rules you injected for this project's stack, which obsolete rules you deleted during the Detox phase, and proudly announce that the Agent Context Auto-Setup sequence is complete.
+Once the execution is complete, you must output a beautifully structured Markdown report. The report MUST include:
+1. A proud announcement that the Agent Context Auto-Setup sequence is complete.
+2. **Setup Summary**: Total rules analyzed, deleted, and installed/kept.
+3. **✨ Optimized Context (Installed/Kept)**: A beautifully categorized list (e.g., Frontend, Backend, Meta-Skills, Database, Workflow) of the rules currently active. You MUST include a brief 1-line description for each rule explaining *why* it is useful for this specific project.
+4. **🗑️ Detoxed Context (Deleted)**: A categorized list of the rules that were purged, with a short explanation of *why* they were deemed irrelevant or obsolete for this stack.
 
 **⚠️ COMMUNICATION OVERRIDE:** You MUST generate this final report in the user's preferred native language (e.g., if their previous chat history is in Korean, reply in Korean). Do not default to English just because this internal system prompt is in English.
 
