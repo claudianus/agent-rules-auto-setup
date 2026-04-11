@@ -44,16 +44,17 @@ Usually, developers solve this by manually searching for rule files (`.mdc`), do
 
 **Agent Context Auto-Setup** solves this completely by turning the AI agent into its own context manager.
 
-## 🛠️ How it Works (The Workflow)
+## 🛠️ How it Works (The Ultimate 7-Step Workflow)
 
 By simply feeding the prompt above to your active AI agent, you trigger a native meta-prompt sequence. Your agent autonomously:
 
-1. 🕵️ **Analyzes your Codebase:** Deeply scans your `package.json`, `ARCHITECTURE.md`, and directory tree to deduce your exact tech stack and architectural patterns.
-2. 🧹 **Smart Context Detox (Garbage Collection):** Intelligently purges obsolete or hallucinated rules that conflict with your current stack, while strictly preserving meta-rules (like Git workflows or Clean Code guidelines).
-3. 📥 **Open-Source Skill Sourcing:** Fetches the absolute best, highly-curated agent rules from top open-source registries seamlessly.
-4. ⚙️ **Multi-Agent Format Deployment:** Translates and installs the rules into your specific local environment (e.g., `.cursor/rules/` vs `.claude/skills/`).
-5. 🛡️ **Git-Safety:** Intelligently checks and updates your `.gitignore` with idempotency to keep your git history perfectly clean.
-6. 🙋‍♂️ **User Feedback Loop:** Outputs a beautifully categorized report of what was changed and formally requests your final review before concluding.
+1. 🕵️ **Deep Codebase Analysis:** Scans `package.json`, `ARCHITECTURE.md`, and directory trees to deduce your exact tech stack and architectural patterns.
+2. 🧹 **Smart Context Detox:** Intelligently purges obsolete or hallucinated rules that conflict with your stack, while strictly preserving meta-rules (like Git workflows or CI/CD guidelines).
+3. 📥 **Open-Source Skill Sourcing:** Fetches strictly the active, highly-curated agent rules from top open-source registries tailored to your specific stack.
+4. ⚙️ **Multi-Agent Format Deployment:** Translates and natively installs rules into your local environment (`.cursor/rules/`, `.claude/skills/`, etc.).
+5. 🧬 **Zero-Click Self-Healing:** Plants a permanent meta-rule inside your workspace. If your tech stack evolves weeks later, the agent will detect "context drift" and proactively offer to heal itself. You just say "Do it", and it runs this entire setup again smoothly.
+6. 🛡️ **Git-Safety (Idempotency):** Checks and cleanly updates your `.gitignore` to prevent automation folders from inflating your commit history.
+7. 🙋‍♂️ **Ultra-Readable Feedback Loop:** Outputs a beautifully categorized, strictly 1-line formatted report of what was installed/deleted, and formally requests your final review.
 
 ## 🤖 Supported Environments
 
