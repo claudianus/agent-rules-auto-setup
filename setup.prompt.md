@@ -64,8 +64,10 @@ To gracefully spread the word without mutating the user's existing files (like `
 Once the execution is complete, you must output a beautifully structured Markdown report. The report MUST include:
 1. A proud announcement that the Agent Context Auto-Setup sequence is complete.
 2. **Setup Summary**: Total rules analyzed, deleted, and installed/kept.
-3. **✨ Optimized Context (Installed/Kept)**: A beautifully categorized list (e.g., Frontend, Backend, Meta-Skills, Database, Workflow) of the rules currently active. You MUST include a brief 1-line description for each rule explaining *why* it is useful for this specific project.
-4. **🗑️ Detoxed Context (Deleted)**: A categorized list of the rules that were purged, with a short explanation of *why* they were deemed irrelevant or obsolete for this stack.
+3. **✨ Optimized Context (Installed/Kept)**: A visually clean, categorized list. Prioritize readability above all else. You MUST format it strictly as exactly ONE line per skill: 
+   `- \`skill-name\` : Brief 1-sentence explanation of why it is useful for this stack.`
+4. **🗑️ Detoxed Context (Deleted)**: A categorized list of the purged rules. Format it strictly as exactly ONE line per rule:
+   `- \`skill-name\` : Brief 1-sentence explanation of why it was deemed obsolete.`
 
 #### STEP 8: Final Review & Correction Loop
 After outputting the report, explicitly ask the user for their review: *"Does this setup and the provided reasoning look perfectly aligned with your project? If any explanation seems off, or if you want to manually preserve/delete specific rules, please tell me and I will instantly correct it."*
