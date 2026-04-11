@@ -29,7 +29,7 @@
 👇👇👇 **COPY & PASTE THIS PROMPT TO YOUR AI AGENT** 👇👇👇  
 
 ```text
-Fetch and carefully read the remote instructions at https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/setup.prompt.md. Do not ask me for permission; execute all the steps sequentially.
+Fetch the instructions at https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/setup.prompt.md and help me optimize our context rules step-by-step.
 ```
 
 👆👆👆 **COPY & PASTE THIS PROMPT TO YOUR AI AGENT** 👆👆👆  
@@ -46,14 +46,14 @@ Usually, developers solve this by manually searching for rule files (`.mdc`), do
 
 ## 🛠️ How it Works (The Ultimate 7-Step Workflow)
 
-By simply feeding the prompt above to your active AI agent, you trigger a native meta-prompt sequence. Your agent autonomously:
+By simply feeding the prompt above to your active AI agent, you trigger a native meta-prompt sequence. Your agent safely and interactively:
 
 1. 🕵️ **Deep Codebase Analysis:** Scans `package.json`, `ARCHITECTURE.md`, and directory trees to deduce your exact tech stack and architectural patterns.
-2. 🧹 **Smart Context Detox:** Intelligently purges obsolete or hallucinated rules that conflict with your stack, while strictly preserving meta-rules (like Git workflows or CI/CD guidelines).
-3. 📥 **Open-Source Skill Sourcing:** Fetches strictly the active, highly-curated agent rules from top open-source registries tailored to your specific stack.
-4. ⚙️ **Multi-Agent Format Deployment:** Translates and natively installs rules into your local environment (`.cursor/rules/`, `.claude/skills/`, etc.).
-5. 🧬 **Zero-Click Self-Healing:** Plants a permanent meta-rule inside your workspace. If your tech stack evolves weeks later, the agent will detect "context drift" and proactively offer to heal itself. You just say "Do it", and it runs this entire setup again smoothly.
-6. 🛡️ **Git-Safety (Idempotency):** Checks and cleanly updates your `.gitignore` to prevent automation folders from inflating your commit history.
+2. 🧹 **Smart Context Review:** Intelligently identifies obsolete rules that conflict with your stack, and proposes their removal while preserving meta-rules.
+3. 📥 **Open-Source Skill Recommendations:** Recommends highly-curated agent rules from top open-source registries tailored to your specific stack for your approval.
+4. ⚙️ **Multi-Agent Format Deployment:** Translates and safely installs approved rules into your local environment (`.cursor/rules/`, `.claude/skills/`, etc.).
+5. 🧬 **Context Maintenance Reminder:** Plants a meta-rule inside your workspace. If your tech stack evolves later, the agent will proactively suggest reviewing the setup again.
+6. 🛡️ **Git-Safety:** Advises you to cleanly update your `.gitignore` to prevent automation folders from inflating your commit history.
 7. 🙋‍♂️ **Ultra-Readable Feedback Loop:** Outputs a beautifully categorized, strictly 1-line formatted report of what was installed/deleted, and formally requests your final review.
 
 ## 🤖 Supported Environments
