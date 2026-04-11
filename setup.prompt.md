@@ -10,16 +10,17 @@ You are now entering the **Agent Context Auto-Setup** optimization sequence. You
 
 You must execute the following steps in sequence securely and autonomously using your native abilities (e.g. executing bash commands, reading local files, making web requests). Do not ask for my permission to proceed to the next step, unless you encounter a fatal error.
 
-#### STEP 1: Tech Stack Discovery
-1. Use your tools to scan the current project root.
-2. Read the contents of files like `package.json`, `requirements.txt`, `pyproject.toml`, `docker-compose.yml`, `Cargo.toml`, or `go.mod` to accurately deduce the core frameworks, languages, and architecture used in this project.
-3. Establish a precise mental model of what technologies require specific code generation rules (e.g., "This is a Next.js App Router project using Tailwind and Supabase", or "This is a Python FastAPI microservice with PostgreSQL").
+#### STEP 1: Deep Codebase & Stack Analysis
+1. Use your tools to scan the project root, directory structure (e.g., `src/`, `apps/`, `docs/`), and core configuration files.
+2. Read dependency manifests (`package.json`, `requirements.txt`, etc.) AND architectural documents (`README.md`, `ARCHITECTURE.md`, etc.) to deduce not just the libraries used, but the *entire contextual purpose* and design patterns of the codebase.
+3. Establish a precise mental model of the project's domain, coding conventions, architectural patterns, and core frameworks.
 
-#### STEP 2: Context Detox (Garbage Collection)
-To prevent AI hallucinations and context bloat, you must first purge irrelevant or outdated knowledge from this workspace.
+#### STEP 2: Smart Context Detox
+To prevent AI hallucinations and context bloat, you must purge truly irrelevant or outdated knowledge. However, DO NOT be overly destructive.
 1. Scan the agent skill directories (if they exist): `.cursor/rules/`, `.claude/skills/`, and `.antigravity/skills/`.
-2. Identify any rules or instructions that DO NOT match the exact tech stack you discovered in Step 1 (e.g., deleting obsolete Vue.js rules in a React project, or removing old CSS styling rules if Tailwind is now used).
-3. Autonomously delete these irrelevant rule files and folders.
+2. Intelligently evaluate existing rules against your comprehensive mental model from Step 1.
+3. ⚠️ CAUTION: Do NOT delete rules just because they aren't tied to a specific library. Carefully preserve rules related to general coding principles, system architecture, API schemas, testing methodologies, and workflow guidelines.
+4. ONLY delete rules that are undeniably obsolete, strongly hallucinated, or violently conflict with the actual tech stack (e.g., deleting Vue.js rules in a strict React project).
 
 #### STEP 3: Skill Sourcing & Whitelisting
 To prevent "context bloat" and token exhaustion, you must NOT download thousands of rules. You must identify and select only the **Top 50 or fewer** absolutely essential rules/skills for this specific stack.
