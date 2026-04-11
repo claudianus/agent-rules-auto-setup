@@ -1,14 +1,19 @@
-# Agent Context Auto-Setup
+# ⚡ Agent Context Auto-Setup
 
 <div align="center">
 
 ![Agent-Native](https://img.shields.io/badge/Architecture-Agent--Native-8A2BE2?style=for-the-badge)
 ![Zero Config](https://img.shields.io/badge/Installation-Zero__Config-2ea44f?style=for-the-badge)
-![Cursor](https://img.shields.io/badge/Cursor-Ready-black?style=for-the-badge)
-![Claude Code](https://img.shields.io/badge/Claude%20Code-Ready-d46c59?style=for-the-badge)
-![Windsurf](https://img.shields.io/badge/Windsurf-Ready-0ea5e9?style=for-the-badge)
+![Cursor](https://img.shields.io/badge/IDE-Cursor-black?style=for-the-badge&logo=cursor)
+![Claude Code](https://img.shields.io/badge/CLI-Claude_Code-d46c59?style=for-the-badge&logo=anthropic)
+![Windsurf](https://img.shields.io/badge/IDE-Windsurf-0ea5e9?style=for-the-badge)
+
+**No Code. Just Prompt.**<br>
+*Instantly optimize, align, and detox your AI coding assistant's context.*
 
 </div>
+
+---
 
 ## 🧙‍♂️ The One-Line Setup Prompt
 
@@ -26,22 +31,36 @@ Fetch and carefully read the remote instructions at https://raw.githubuserconten
 
 ---
 
-## 🚀 How it works (No Code. Just Prompt.)
+## 🚀 Why Use This? (The Problem)
 
-Agent Context Auto-Setup is a direct meta-prompting template designed to instantly optimize and align any AI coding assistant with perfectly curated contextual skills and rules—without installing any CLI tools, python scripts, or external dependencies.
+AI assistants (like Cursor or Claude Code) are incredibly smart, but they **hallucinate** or **write bad code** if their project context is bloated or missing. 
+Usually, developers solve this by manually searching for rule files (`.mdc`), downloading them, and dropping them into folders. This is tedious, and over time, the rules become outdated when your tech stack evolves.
 
-By simply feeding the prompt above to your active AI agent, the agent itself acts as the orchestrator. It autonomously:
-1. Analyzes your codebase stack
-2. Purges obsolete context (Garbage Collection)
-3. Scouts the best open-source repositories for Agent rules
-4. Installs them into your project's optimal rule directory
-5. Secures your `.gitignore`
+**Agent Context Auto-Setup** solves this completely by turning the AI agent into its own context manager.
+
+## 🛠️ How it Works (The Workflow)
+
+By simply feeding the prompt above to your active AI agent, you trigger a native meta-prompt sequence. Your agent autonomously:
+
+1. 🕵️ **Analyzes your Codebase:** Deeply scans your `package.json`, `ARCHITECTURE.md`, and directory tree to deduce your exact tech stack and architectural patterns.
+2. 🧹 **Smart Context Detox (Garbage Collection):** Intelligently purges obsolete or hallucinated rules that conflict with your current stack, while strictly preserving meta-rules (like Git workflows or Clean Code guidelines).
+3. 📥 **Open-Source Skill Sourcing:** Fetches the absolute best, highly-curated agent rules from top open-source registries seamlessly.
+4. ⚙️ **Multi-Agent Format Deployment:** Translates and installs the rules into your specific local environment (e.g., `.cursor/rules/` vs `.claude/skills/`).
+5. 🛡️ **Git-Safety:** Intelligently checks and updates your `.gitignore` with idempotency to keep your git history perfectly clean.
+6. 🙋‍♂️ **User Feedback Loop:** Outputs a beautifully categorized report of what was changed and formally requests your final review before concluding.
 
 ## 🤖 Supported Environments
 
-This prompt dynamically adapts itself to local environments. Currently verified platforms include:
+This prompt dynamically adapts itself to your local IDE/CLI tool. Currently verified zero-config platforms include:
+
 - **Cursor IDE** (`.cursor/rules/*.mdc`)
-- **Claude Code** (`.claude/skills/*`)
 - **Windsurf** (`.windsurf/rules/*`)
+- **Claude Code CLI** (`.claude/skills/*`)
 - **Cline** (`.cline/skills/*`)
 - **Antigravity** (`.antigravity/skills/*`)
+
+---
+
+<div align="center">
+<i>Enjoy a perfectly synced AI assistant with absolutely zero context bloat!</i>
+</div>
