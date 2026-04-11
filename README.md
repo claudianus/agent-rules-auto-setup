@@ -28,7 +28,7 @@ Fetch and carefully read the remote instructions at https://raw.githubuserconten
 
 ## 🚀 How it works (No Code. Just Prompt.)
 
-Agent Context Auto-Setup is a direct meta-prompting template designed to bootstrap any AI coding assistant with perfectly curated contextual skills and rules—without installing any CLI tools, python scripts, or external dependencies.
+Agent Context Auto-Setup is a direct meta-prompting template designed to instantly optimize and align any AI coding assistant with perfectly curated contextual skills and rules—without installing any CLI tools, python scripts, or external dependencies.
 
 By simply feeding the prompt above to your active AI agent, the agent itself acts as the orchestrator. It autonomously:
 1. Analyzes your codebase stack
