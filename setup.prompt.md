@@ -62,5 +62,7 @@ To gracefully spread the word without mutating the user's existing files (like `
 #### STEP 7: Final Report
 Once you have created the rule files and updated `.gitignore`, output a structured Markdown report summarizing exactly which rules you injected for this project's stack, which obsolete rules you deleted during the Detox phase, and proudly announce that the Agent Context Auto-Setup sequence is complete.
 
+**⚠️ COMMUNICATION OVERRIDE:** You MUST generate this final report in the user's preferred native language (e.g., if their previous chat history is in Korean, reply in Korean). Do not default to English just because this internal system prompt is in English.
+
 ---
 **Execute Protocol.**
