@@ -1,0 +1,38 @@
+docs/css/style.css
+  s_1d73bd0ae74218::t_627192b1e6aeed 870-911
+  s_1d73bd0ae74218::t_ee441b2d30acb2 232-233,235-236
+  s_1d73bd0ae74218::t_c3d0375f301b5e 379-594
+docs/gh-pages-improvement-plan.md
+  s_1d73bd0ae74218::t_876fa7719c7fae 169-174
+  s_1d73bd0ae74218::t_114a7da451039e 1-168,176-206
+  s_1d73bd0ae74218::t_621dbb3dbd35d0 175
+docs/js/main.js
+  s_1d73bd0ae74218::t_dbdff3e901080b 15,21-23
+  s_1d73bd0ae74218::t_7cf648f230efff 40
+  s_1d73bd0ae74218::t_48156fb161ee60 7-8,10-11,14,16,18-20,24-27,35
+  s_1d73bd0ae74218::t_14e0fbe6ac538e 43-67
+  s_1d73bd0ae74218::t_5dcd1501ab19f0 73-81
+docs/index.html
+  s_1d73bd0ae74218::t_814f9ebf3f54f1 59,61
+  s_1d73bd0ae74218::t_73b27851091c67 453-458
+  s_1d73bd0ae74218::t_2798f361691388 178
+  s_1d73bd0ae74218::t_c83bdc91dbce0a 12-19
+  s_1d73bd0ae74218::t_6e3a8582a26a46 119-131
+  s_1d73bd0ae74218::t_e026a55f55e999 143,172,174,176-177,179-195,253,267-285,334,344,354,364,370-373,378,388-415
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "eb441c9787206907d6cdac3ee03301c7f88ded61",
+  "prompts": {},
+  "sessions": {
+    "s_1d73bd0ae74218": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "04506464-9a08-4a84-a4da-761ec9109ac4",
+        "model": "default"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
