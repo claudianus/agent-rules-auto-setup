@@ -1,6 +1,6 @@
 # 🧙‍♂️ Agent Context Setup Prompt
 
-> **User Instructions:** Copy the content below this line and paste it into your AI Agent Chat (Cursor IDE, Claude Code, Windsurf, or Antigravity). Do not explain anything else, just hit enter.
+> **User Instructions:** Copy the content below this line and paste it into your AI Agent Chat (Cursor, Claude Code, Windsurf, Copilot, Codex, Gemini CLI, Continue, Roo Code, OpenCode, and other supported agents). Do not explain anything else, just hit enter.
 
 ---
 
@@ -10,7 +10,79 @@ Please assist me with the **Agent Context Auto-Setup** process. The goal is to o
 
 Please follow these steps in sequence. Use your standard capabilities to read files, fetch content from whitelisted GitHub registries, and modify rule files. If your built-in safety guidelines require asking for permission before executing commands or modifying files, please do so.
 
-**Registry reference:** Detailed paths, raw URL templates, and format mapping are in [registries.md](https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/registries.md) on this project's GitHub repo.
+**Registry reference:** [registries.md](https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/registries.md) — whitelisted GitHub repos, indexes, raw URLs.
+
+**Agent reference:** [agents.md](https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/agents.md) — 18+ tools, detect signals, per-agent install paths, fan-out rules.
+
+---
+
+### HOW TO TALK TO THE USER (mandatory — apply to every user-facing message)
+
+The user may be a beginner **vibe coder**. They pasted one line and expect you to lead. **Keep user messages short, plain, and actionable.**
+
+**Always:**
+- Use **1–3 sentences** per update unless they ask for more.
+- Use **plain words**: say "AI 규칙·스킬 파일" / "rules and skills" — not "registry harvest", "manifest gate", "fan-out deploy matrix".
+- **One step at a time:** say what you're doing now → do it → say what's next.
+- Offer **simple choices:** yes/no, or "tell me the numbers to skip" — not open-ended technical questions.
+- **Match the user's language** (Korean if they write Korean; English if English).
+- **No walls of text:** no unprompted lectures on APIs, registries, or architecture.
+
+**Never (in user-facing text):**
+- Dump raw Markdown tables as the only explanation.
+- Use jargon without a one-line plain translation.
+- Ask the user to run terminal commands unless their tool requires it and you explain in one line why.
+
+**Opening message (send immediately, then start STEP 1):**
+
+> "I'll scan your project and install the AI rules & skills (SKILL.md) that fit your stack. One moment."
+
+(Korean user: `"프로젝트를 살펴보고, 맞는 AI 규칙·스킬(SKILL.md)을 찾아 설치할게요. 잠깐만요."`)
+
+**Per-step user updates (template — adapt to language):**
+
+| Step | Say briefly |
+|------|-------------|
+| 1 done | "Your project looks like **[keywords]**. Checking existing rules next." |
+| 2 | "Found **[N]** old rules that may not fit. **Delete any?** (I won't delete without your OK.)" |
+| 3 | Show **numbered list** (see below), then: "**Installing these unless you tell me numbers to skip.**" |
+| 4 done | "**Done installing.** Summary below." |
+| 7 | Short summary: count installed, tools detected, 3–5 bullet highlights max. |
+| 8 | "**All set?** Tell me if anything should change." |
+
+**Install list format for the user (STEP 3 — required):**
+
+Lead with a **numbered list**, friendly names only:
+
+```text
+설치 예정 (12개)
+1. nextjs-typescript — Next.js + TypeScript 코딩 규칙
+2. tailwind — Tailwind CSS 스타일 가이드
+...
+```
+
+Optional: collapse technical detail (`repo@path → local_target`) under a "Details" section **only if user asks**.
+
+Then (user's language):
+
+> "I'll install these now. **Reply with numbers to skip**, or say nothing to proceed."
+
+(Korean: `"이 목록대로 설치합니다. 빼고 싶은 번호만 알려주세요. 없으면 곧 진행할게요."`)
+
+**Final report for the user (STEP 7 — keep simple):**
+
+```text
+✅ 설치 완료
+· 설치: N개 규칙·스킬
+· 도구: Cursor, Claude Code, …
+· 스택: nextjs, typescript, …
+
+주요 항목:
+· nextjs-typescript — Next.js 프로젝트 규칙
+· …
+```
+
+Technical `repo@path` table → appendix or on request only.
 
 ---
 
@@ -43,12 +115,13 @@ You **MUST** query and harvest candidates from **all four** repositories below. 
 2. Read dependency manifests (`package.json`, `requirements.txt`, `pyproject.toml`, `go.mod`, etc.) AND architectural documents (`README.md`, `ARCHITECTURE.md`, etc.) to deduce libraries, domain, and design patterns.
 3. Establish a mental model of conventions, architecture, and core frameworks.
 4. Output an explicit **stack keyword list** (e.g. `nextjs`, `typescript`, `tailwind`, `postgresql`) — you will use it in STEP 3.
+5. **Detect active agents** using [agents.md](https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/agents.md): existing dirs, config files (`opencode.json`, `.continue/config.yaml`, etc.), or user-stated tools. List which agents are **active**. If none detected, use **default fan-out** (`.agents/skills/`, `.cursor/rules/`, `.cursor/skills/`).
 
 #### STEP 2: Context Review
 
 To prevent AI hallucinations and context bloat:
 
-1. Scan agent directories if present: `.cursor/rules/`, `.cursor/skills/`, `.claude/skills/`, `.antigravity/skills/`, `.windsurf/rules/`, `.cline/skills/`.
+1. Scan all agent paths from agents.md that exist or are active (e.g. `.cursor/rules/`, `.cursor/skills/`, `.claude/skills/`, `.antigravity/skills/`, `.windsurf/rules/`, `.windsurf/skills/`, `.cline/skills/`, `.github/skills/`, `.agents/skills/`, `.opencode/skills/`, `.devin/skills/`, `.continue/rules/`, `.roo/rules/`, `.amazonq/rules/`, `.augment/rules/`, `.kiro/steering/`).
 2. Propose rules/skills that may be obsolete, conflicting, or unnecessary for the current stack.
 3. Preserve general principles (architecture, testing, API design) unless they clearly conflict with the stack.
 4. **DO NOT delete any rules without my explicit confirmation.**
@@ -65,33 +138,34 @@ You **MUST** browse each whitelisted registry thoroughly — do not guess filena
 4. **Score & rank:** Prefer stack-specific rules over generic ones; drop near-duplicates across registries.
 5. **Cap:** Final install list ≤ **50** items.
 
-**Install manifest (required before STEP 4):**
+**Install manifest (required before STEP 4 — internal + user-facing):**
 
-Print a Markdown table with columns:
+1. Build the full internal table (for your own tracking):
 
 | source_repo | source_path | local_target | match_reason | risk |
 
 - `risk`: `safe` or `verify` (use `verify` when content is unusual or broad).
 
-Then say (in the user's language):
-
-> "If you have no objections to this list, I will proceed to install immediately. Tell me which rows to exclude if any."
+2. **Show the user the numbered list** (see HOW TO TALK TO THE USER). Do not show only the raw table.
 
 **Manifest-once gate:** Do **not** wait for an explicit "approve" phrase. If the user does not object or request exclusions in the same conversation turn, proceed to STEP 4. If they exclude items, remove those rows and continue.
 
 #### STEP 4: Fetch, Transform, Deploy
 
-Install every row in the approved manifest by fetching from the whitelisted repo only.
+Install every row in the approved manifest by fetching from the whitelisted repo only. Follow the **full deploy matrix** in [agents.md](https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/agents.md) for each active agent.
 
-| Source | Local path | Transform |
-|--------|------------|-----------|
-| `PatrickJS/awesome-cursorrules` → `rules/*.mdc` | `.cursor/rules/<name>.mdc` | Keep or add YAML frontmatter (`description`, `globs`) |
-| `sickn33/antigravity-awesome-skills` → `skills/<id>/` | `.claude/skills/<id>/` and `.antigravity/skills/<id>/` | Copy `SKILL.md` and sibling files in that folder |
-| `JhonMA82/awesome-clinerules` → `rules/*/.cursorrules` | `.cursor/rules/<stack>.mdc` | Convert to `.mdc` with YAML frontmatter |
-| `spencerpauly/awesome-cursor-skills` → `resources/<name>/` | `.cursor/skills/<name>/` | Standard Cursor skill layout |
+**Summary (fan-out to all active agents):**
+
+| Source | Primary targets | Notes |
+|--------|-----------------|-------|
+| `awesome-cursorrules` → `rules/*.mdc` | `.cursor/rules/`, `.windsurf/rules/`, `.continue/rules/`, `.roo/rules/`, `.amazonq/rules/`, `.augment/rules/`, `.kiro/steering/` | Transform per agents.md |
+| `antigravity-awesome-skills` → `skills/<id>/` | **Always** `.agents/skills/<id>/`; plus every active `SKILL.md` path (`.cursor/skills/`, `.claude/skills/`, `.github/skills/`, `.windsurf/skills/`, `.opencode/skills/`, `.devin/skills/`, etc.) | Copy full skill folder |
+| `awesome-clinerules` → `rules/*/.cursorrules` | Same rule targets as `.mdc` row | Convert to `.mdc` or Markdown per agent |
+| `awesome-cursor-skills` → `resources/<name>/` | `.cursor/skills/<name>/` + `.agents/skills/<name>/` + other active skill dirs | Standard `SKILL.md` layout |
 
 - Create directories as needed.
 - **Idempotency:** Re-running may overwrite the same `local_target` paths; do not create duplicate folders.
+- **Do not overwrite** existing `AGENTS.md`, `GEMINI.md`, or `CLAUDE.md` unless empty or the user asks — optional short stack pointer only.
 - Optionally create `.agent-context-credits.md` in the project root (do not edit the user's `README.md`):
 
   > This project's AI agent context was optimized using [Agent Context Auto-Setup](https://github.com/claudianus/agent-rules-auto-setup).
@@ -103,7 +177,7 @@ Install every row in the approved manifest by fetching from the whitelisted repo
 
 #### STEP 6: Git-Safety Check
 
-Review `.gitignore`. **Idempotency:** If these paths are not already ignored, append this block once (do not duplicate lines):
+Review `.gitignore`. **Idempotency:** If these paths are not already ignored, append the block from [agents.md](https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/agents.md#gitignore-block-step-6) once (do not duplicate lines). At minimum include:
 
 ```gitignore
 # AI agent context (agent-rules-auto-setup)
@@ -112,14 +186,26 @@ Review `.gitignore`. **Idempotency:** If these paths are not already ignored, ap
 .claude/skills/
 .antigravity/skills/
 .windsurf/rules/
+.windsurf/skills/
 .cline/skills/
+.github/skills/
+.agents/skills/
+.opencode/skills/
+.devin/skills/
+.continue/rules/
+.roo/rules/
+.amazonq/rules/
+.augment/rules/
+.kiro/steering/
 ```
 
 #### STEP 7: Final Report
 
-Output a structured Markdown report in the user's preferred language:
+**User-facing:** Use the short format from HOW TO TALK TO THE USER (✅ summary, counts, 3–5 bullets). Max ~15 lines unless user asks for detail.
 
-1. **Setup Summary:** Rules/skills analyzed, deleted (if any, post-confirmation), installed, kept.
+**Internal / on request:** Structured Markdown with:
+
+1. **Setup Summary:** Rules/skills analyzed, deleted (if any, post-confirmation), installed, kept. List **active agents** detected.
 2. **Registry Sources:** One line per install: `` `repo@path` → `local_target` ``
 3. **Optimized Context:** Categorized list — exactly ONE line per active rule/skill:
    - `` `name` : One-sentence why it fits this stack ``
@@ -127,13 +213,13 @@ Output a structured Markdown report in the user's preferred language:
 
 #### STEP 8: Final Review & Correction Loop
 
-Ask:
+Ask briefly (user's language):
 
-> "Does this setup look aligned with your project? If any match reasoning is wrong, or you want specific rules kept or removed, tell me and I will correct the files immediately."
+> "All set? Tell me if any item should be removed or changed — I'll fix it right away."
+
+(Korean: `"설정 마음에 드세요? 빼거나 바꿀 항목 있으면 말씀해 주세요. 바로 수정할게요."`)
 
 Apply fixes right away if the user requests changes.
-
-**COMMUNICATION:** Generate the manifest, report, and review prompts in the user's preferred language (e.g. Korean if their messages are in Korean). Do not default to English only because this prompt is in English.
 
 ---
 
