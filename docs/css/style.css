@@ -316,13 +316,32 @@ body {
   background: #080810;
   border: 1px solid rgba(139, 92, 246, 0.3);
   border-radius: var(--radius-sm);
-  padding: 20px 20px 20px 24px;
+  padding: 18px 20px;
   font-family: var(--font-mono);
-  font-size: clamp(0.75rem, 2vw, 0.875rem);
-  line-height: 1.7;
-  color: #c4b5fd;
-  word-break: break-all;
+  font-size: clamp(0.8125rem, 2.2vw, 0.9rem);
+  line-height: 1.65;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prompt-line {
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.prompt-url {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  color: #86efac;
+  font-size: clamp(0.7rem, 1.8vw, 0.8125rem);
+  line-height: 1.55;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .copy-row {

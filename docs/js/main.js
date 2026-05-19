@@ -1,8 +1,31 @@
 const SETUP_PROMPT =
   "Fetch the instructions at https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/setup.prompt.md and help me optimize our context rules step-by-step.";
 
+const PROMPT_URL =
+  "https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/setup.prompt.md";
+
+function renderPromptBox(el) {
+  const [before, after] = SETUP_PROMPT.split(PROMPT_URL);
+  el.replaceChildren();
+
+  const lead = document.createElement("p");
+  lead.className = "prompt-line";
+  lead.textContent = before.trim();
+  el.appendChild(lead);
+
+  const url = document.createElement("code");
+  url.className = "prompt-url";
+  url.textContent = PROMPT_URL;
+  el.appendChild(url);
+
+  const tail = document.createElement("p");
+  tail.className = "prompt-line";
+  tail.textContent = after.trim();
+  el.appendChild(tail);
+}
+
 const promptEl = document.getElementById("setup-prompt");
-if (promptEl) promptEl.textContent = SETUP_PROMPT;
+if (promptEl) renderPromptBox(promptEl);
 
 function flashAllCopyButtons() {
   document.querySelectorAll("[data-copy]").forEach((btn) => {
