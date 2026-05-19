@@ -1,0 +1,23 @@
+registries.md
+  s_fe561095d6eb48::t_9089e85d48458c 1-135
+setup.prompt.md
+  s_fe561095d6eb48::t_b6d2f9d37cf325 9,11-38,41-45,48-97,100-102,105-116,119-126,130-136,139
+README.md
+  s_fe561095d6eb48::t_4688fb8f4400de 47,49,51-71,77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "cfd933ef634c90c711cedb3d7291b786de7f1e59",
+  "prompts": {},
+  "sessions": {
+    "s_fe561095d6eb48": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "961d2523-b04b-4548-88f6-17af09f1be93",
+        "model": "composer-2.5"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
