@@ -4,6 +4,8 @@ Reference for agents running **Agent Context Auto-Setup**. Only fetch from these
 
 Full install protocol: [setup.prompt.md](setup.prompt.md)
 
+**Supported agents & deploy paths:** [agents.md](agents.md) — 18+ tools, detection, fan-out install mapping.
+
 ---
 
 ## Registry list
@@ -130,6 +132,6 @@ Respect GitHub rate limits; prefer index files (`skills_index.json`, README) bef
 | Source path pattern | Write to |
 |---------------------|----------|
 | `awesome-cursorrules/rules/*.mdc` | `.cursor/rules/<basename>.mdc` |
-| `antigravity-awesome-skills/skills/<id>/**` | `.claude/skills/<id>/`, `.antigravity/skills/<id>/` |
-| `awesome-clinerules/rules/*/.cursorrules` | `.cursor/rules/<stack>.mdc` |
-| `awesome-cursor-skills/resources/<name>/**` | `.cursor/skills/<name>/` |
+| `antigravity-awesome-skills/skills/<id>/**` | `.agents/skills/<id>/` (always) + per-agent paths in [agents.md](agents.md) |
+| `awesome-clinerules/rules/*/.cursorrules` | `.cursor/rules/<stack>.mdc` + rule stores in [agents.md](agents.md) |
+| `awesome-cursor-skills/resources/<name>/**` | `.cursor/skills/<name>/`, `.agents/skills/<name>/`, + active agents |
