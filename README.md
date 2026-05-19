@@ -7,9 +7,12 @@
 ![Cursor](https://img.shields.io/badge/IDE-Cursor-black?style=for-the-badge&logo=cursor)
 ![Claude Code](https://img.shields.io/badge/CLI-Claude_Code-d46c59?style=for-the-badge&logo=anthropic)
 ![Windsurf](https://img.shields.io/badge/IDE-Windsurf-0ea5e9?style=for-the-badge)
+[![Website](https://img.shields.io/badge/📖_Guide-GitHub_Pages-8b5cf6?style=for-the-badge)](https://claudianus.github.io/agent-rules-auto-setup/)
 
 **No Code. Just Prompt.**<br>
 *Instantly optimize, align, and detox your AI coding assistant's context.*
+
+👉 **New here?** Start with the [**beginner-friendly guide**](https://claudianus.github.io/agent-rules-auto-setup/) — one-click prompt copy, no terminal required.
 
 </div>
 
@@ -70,15 +73,21 @@ The agent **must** search these repos (details in [registries.md](registries.md)
 
 Fallback: [cursor.directory](https://cursor.directory) only when the four repos lack a match.
 
-## 🤖 Supported Environments
+## 🤖 Supported Agents
 
-This prompt dynamically adapts itself to your local IDE/CLI tool. Currently verified zero-config platforms include:
+The setup prompt **detects** which tools you use, then **fans out** installs to the right paths. Full matrix: [agents.md](agents.md).
 
-- **Cursor IDE** (`.cursor/rules/*.mdc`, `.cursor/skills/*/SKILL.md`)
-- **Windsurf** (`.windsurf/rules/*`)
-- **Claude Code CLI** (`.claude/skills/*`)
-- **Cline** (`.cline/skills/*`)
-- **Antigravity** (`.antigravity/skills/*`)
+| Category | Agents |
+|----------|--------|
+| **IDE / editor** | Cursor, Windsurf, Zed, JetBrains (Junie), Trae, Kiro, Continue |
+| **CLI / terminal** | Claude Code, OpenAI Codex, Gemini CLI, OpenCode, Devin, Aider |
+| **Copilot / cloud** | GitHub Copilot (IDE + CLI + coding agent), Amazon Q Developer |
+| **Cline family** | Cline, Roo Code, Antigravity |
+| **Cross-agent standard** | [AGENTS.md](https://agents.md/), [Agent Skills](https://agentskills.io/) via `.agents/skills/` |
+
+**Skill hub (always installed):** `.agents/skills/<name>/SKILL.md` — shared by Copilot, Codex, OpenCode, Devin, Windsurf, and others.
+
+**Rule formats:** `.mdc` (Cursor), Markdown rules (Windsurf, Continue, Roo, Amazon Q, Augment, Kiro steering), plus optional `AGENTS.md` / `GEMINI.md` pointers.
 
 ---
 
