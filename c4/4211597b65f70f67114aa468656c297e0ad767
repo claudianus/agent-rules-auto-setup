@@ -1,0 +1,42 @@
+setup.prompt.md
+  s_fe561095d6eb48::t_9596fe5a41cd19 180,189,191-199
+  s_cc802ff7603d18::t_ddf6f6c7919b60 19-85
+  s_fe561095d6eb48::t_f1db7688882be2 3
+  s_fe561095d6eb48::t_c5eecc532cbb33 13-15
+  s_fe561095d6eb48::t_633f99eacfe0f7 208
+  s_cc802ff7603d18::t_0d1b2c0a85cb31 204,206-207,216,218,220,222
+  s_cc802ff7603d18::t_d143706e5fb756 141,143,149
+  s_fe561095d6eb48::t_ace196669f1096 155-157,159-164,168
+  s_fe561095d6eb48::t_e9f35a3a43bc61 118,124
+docs/index.html
+  s_cc802ff7603d18::t_14d9916fcfdf48 83-84
+  s_cc802ff7603d18::t_ee4c58eb14ce1c 43,45-48,50-53,55-59,61,66
+  s_cc802ff7603d18::t_5acc990d73efd0 7,9
+docs/css/style.css
+  s_cc802ff7603d18::t_6e9d44183c87e7 184-186,188,193-222
+  s_cc802ff7603d18::t_e4023f243bfb3d 223-224
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "c44211597b65f70f67114aa468656c297e0ad767",
+  "prompts": {},
+  "sessions": {
+    "s_cc802ff7603d18": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6676c91a-1e8c-4157-a20e-1a37f5365157",
+        "model": "composer-2.5"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    },
+    "s_fe561095d6eb48": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "961d2523-b04b-4548-88f6-17af09f1be93",
+        "model": "composer-2.5"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
