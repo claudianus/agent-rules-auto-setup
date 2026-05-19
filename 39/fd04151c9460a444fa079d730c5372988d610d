@@ -1,0 +1,35 @@
+setup.prompt.md
+  s_cc802ff7603d18::t_f742b8b8f3f7f1 118-120
+  s_cc802ff7603d18::t_2e1a1c3ae331b5 159-170
+  s_cc802ff7603d18::t_79c0a79b31d194 176
+  s_cc802ff7603d18::t_6ad23de8935be6 189-192
+agents.md
+  s_cc802ff7603d18::t_2718242cd2d6de 67-69
+  s_cc802ff7603d18::t_ce07e96584ce74 82
+  s_fe561095d6eb48::t_34b3dae180c4d9 1-45,47-66,70-81,83-151
+  s_cc802ff7603d18::t_704a3ac1863c7a 46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "39fd04151c9460a444fa079d730c5372988d610d",
+  "prompts": {},
+  "sessions": {
+    "s_cc802ff7603d18": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6676c91a-1e8c-4157-a20e-1a37f5365157",
+        "model": "composer-2.5"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    },
+    "s_fe561095d6eb48": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "961d2523-b04b-4548-88f6-17af09f1be93",
+        "model": "composer-2.5"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
