@@ -1,108 +1,108 @@
 # Supported AI Coding Agents
 
-Reference for **Agent Context Auto-Setup**. Use with [setup.prompt.md](setup.prompt.md) and [registries.md](registries.md).
+Reference for **Agent Context Auto-Setup**. The executing agent should read **[setup.prompt.md](setup.prompt.md)** first — all paths are inlined there. This file is the human-readable companion + official doc links.
 
-The [Agent Skills](https://agentskills.io/) layout (`<dir>/<skill-name>/SKILL.md`) is the shared format across most tools. **`.agents/skills/`** is the cross-agent hub — install here whenever a registry delivers `SKILL.md` content.
+Shared skill format: [Agent Skills spec](https://agentskills.io/) → `<dir>/<skill-name>/SKILL.md`
+
+**Universal hub (always install skills here):** `.agents/skills/<name>/` — read by Codex, Copilot, Windsurf, OpenCode, Devin, and others.
 
 ---
 
-## Agent matrix
+## Quick matrix
 
-| Agent | Detect signals | Project paths (rules / skills / context) | Install format |
-|-------|----------------|------------------------------------------|----------------|
-| **Cursor** | `.cursor/`, Cursor settings | `.cursor/rules/*.mdc`, `.cursor/skills/*/SKILL.md` | `.mdc`, `SKILL.md` |
-| **Windsurf (Cascade)** | `.windsurf/`, Codeium | `.windsurf/rules/*.md`, `.windsurf/skills/*/SKILL.md`, `.windsurfrules` (legacy) | Markdown, `SKILL.md` |
-| **Claude Code** | `.claude/`, `CLAUDE.md` | `.claude/skills/*/SKILL.md`, `CLAUDE.md` | `SKILL.md`, `CLAUDE.md` |
-| **Google Antigravity** | `.antigravity/` | `.antigravity/skills/*/SKILL.md` | `SKILL.md` |
-| **Cline** | `.cline/`, Cline extension | `.cline/skills/*/SKILL.md` | `SKILL.md` |
-| **GitHub Copilot** | `.github/copilot*`, Copilot in VS Code | `.github/skills/*/SKILL.md`, `.github/copilot-instructions.md` | `SKILL.md`, Markdown |
-| **OpenAI Codex** | `codex`, `.codex/` | `AGENTS.md` (root/nested), `.agents/skills/*/SKILL.md` | `AGENTS.md`, `SKILL.md` |
-| **OpenCode** | `.opencode/`, `opencode.json` | `.opencode/skills/*/SKILL.md` (also reads `.claude/`, `.agents/`) | `SKILL.md` |
-| **Gemini CLI** | `.gemini/`, `gemini` CLI | `GEMINI.md` (root, parents, JIT by file path), `~/.gemini/GEMINI.md` (global) | `GEMINI.md` |
-| **Continue** | `.continue/`, Continue extension | `.continue/rules/*.md` | Markdown + YAML frontmatter |
-| **Roo Code** | `.roo/`, Roo extension | `.roo/rules/**/*.md`, `.roorules`, `AGENTS.md` | Markdown |
-| **Zed** | Zed project | `.rules`, `.cursorrules`, `.windsurfrules`, `.clinerules`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` (first match) | Markdown |
-| **Amazon Q Developer** | Amazon Q in IDE | `.amazonq/rules/*.md` | Markdown |
-| **Augment (Auggie)** | `.augment/`, Augment extension | `.augment/rules/**/*.md`, `.augment-guidelines`, `AGENTS.md`, `CLAUDE.md` | Markdown |
-| **JetBrains Junie** | `.junie/`, Junie plugin | `.junie/AGENTS.md`, `AGENTS.md` | `AGENTS.md` |
-| **Kiro** | `.kiro/`, Kiro IDE | `.kiro/steering/*.md`, `AGENTS.md` in workspace/global steering | Markdown + optional YAML `inclusion` |
-| **Devin (Terminal)** | `.devin/`, `devin` CLI | `.devin/skills/*/SKILL.md`, `.agents/skills/*/SKILL.md` | `SKILL.md` |
-| **Trae** | Trae IDE, `trae` config | Project **Rules** (IDE); community repos often mirror `.cursor/rules` — prefer `.cursor/` or `.agents/skills/` for file-based rules | Markdown / `SKILL.md` |
-| **Aider** | `.aider*`, `aider` CLI | `CONVENTIONS.md`, `.aider.conf.yml` (not `SKILL.md`) | Conventions Markdown |
-| **AGENTS.md standard** | Any agent listing `AGENTS.md` | `AGENTS.md`, `AGENT.md` at repo root and nested dirs | Markdown |
-
-**Global-only paths (do not write during project setup):** `~/.copilot/skills/`, `~/.agents/skills/`, `~/.claude/skills/`, `~/.config/opencode/skills/`, `~/.codeium/windsurf/skills/`, `~/.config/devin/skills/`, `~/.roo/rules/`, `~/.gemini/GEMINI.md`, `~/.codex/AGENTS.md`, `~/.kiro/steering/`, `~/.continue/rules/`, `~/.augment/rules/`.
+| Agent | Detect | Skills path | Rules / context path |
+|-------|--------|-------------|----------------------|
+| **Cursor** | `.cursor/`, Cursor session | `.cursor/skills/*/SKILL.md` | `.cursor/rules/*.mdc`, `AGENTS.md` |
+| **Claude Code** | `.claude/`, `CLAUDE.md`, session | `.claude/skills/*/SKILL.md` | `CLAUDE.md` |
+| **Windsurf** | `.windsurf/`, session | `.windsurf/skills/*/`, `.agents/skills/` | `.windsurf/rules/*.md`, `AGENTS.md` |
+| **GitHub Copilot** | `.github/copilot*`, session | `.github/skills/`, `.agents/skills/`, `.claude/skills/` | `.github/copilot-instructions.md`, `.github/instructions/*.instructions.md`, `AGENTS.md` |
+| **OpenAI Codex** | Codex session, user says Codex | **`.agents/skills/*/SKILL.md`** | **`AGENTS.md`** (not `.codex/skills/`) |
+| **Gemini CLI** | `.gemini/`, session | via `GEMINI.md` + `.agents/skills/` | `GEMINI.md` (root, parents, JIT) |
+| **Continue** | `.continue/`, `config.yaml` | — | `.continue/rules/*.md` |
+| **Roo Code** | `.roo/`, session | `.agents/skills/` | `.roo/rules/**/*.md`, `.roorules`, `AGENTS.md` |
+| **Cline** | `.cline/`, session | `.cline/skills/*/`, `.claude/skills/` | Cline rules (separate) |
+| **OpenCode** | `.opencode/`, `opencode.json` | `.opencode/skills/`, `.claude/`, `.agents/` | — |
+| **Amazon Q** | `.amazonq/`, session | `.agents/skills/` | `.amazonq/rules/*.md` |
+| **Augment** | `.augment/`, `auggie` | — | `.augment/rules/**/*.md`, `AGENTS.md`, `CLAUDE.md` |
+| **Kiro** | `.kiro/`, session | — | `.kiro/steering/*.md`, `AGENTS.md` |
+| **Devin CLI** | `.devin/`, `devin` | `.devin/skills/`, `.agents/skills/` | — |
+| **Antigravity** | `.antigravity/` | `.antigravity/skills/` | — |
+| **Zed** | Zed Agent, session | `.agents/skills/` | `.rules`, `AGENTS.md`, `.cursorrules`, … (first match) |
+| **Junie** | `.junie/` | `.agents/skills/` | `.junie/AGENTS.md`, `AGENTS.md` |
+| **Aider** | `.aider*`, `aider` | — | `CONVENTIONS.md` |
 
 ---
 
 ## Detection (STEP 1)
 
-Mark an agent as **active** if any of:
+Mark **active** if any:
 
-1. Its project path already exists (e.g. `.github/skills/`).
-2. A known config file exists (e.g. `opencode.json`, `.continue/config.yaml`).
-3. The user names the tool in chat.
-4. **Default fan-out:** If none detected, still install to the **standard project skill hub** (`.agents/skills/`) plus **Cursor** (`.cursor/rules/`, `.cursor/skills/`) — most teams use at least one of these.
-5. **Codex session:** If the running agent is Codex, always treat Codex as active and install skills to `.agents/skills/`.
+1. **Session:** the running product is that agent (Cursor chat, Codex CLI, etc.).
+2. **Paths/config:** project folder or config file exists (see matrix).
+3. **User:** user names the tool in chat.
+4. **Default fan-out:** none detected → `.agents/skills/` + `.cursor/rules/` + `.cursor/skills/`.
 
 ---
 
-## Deploy mapping (STEP 4)
+## Deploy: SKILL.md folders
 
-### From registry `SKILL.md` directories
-
-Copy full skill folder to every **active** agent that uses `SKILL.md`, and always to:
+Copy **full skill directory** to:
 
 | Target | When |
 |--------|------|
-| `.agents/skills/<id>/` | Always (cross-agent hub) |
-| `.cursor/skills/<id>/` | Cursor active or default fan-out |
-| `.claude/skills/<id>/` | Claude Code, OpenCode, Antigravity, or default |
-| `.antigravity/skills/<id>/` | Antigravity active |
-| `.cline/skills/<id>/` | Cline active |
-| `.github/skills/<id>/` | GitHub Copilot active |
-| `.opencode/skills/<id>/` | OpenCode active |
+| `.agents/skills/<id>/` | **Always** |
+| `.cursor/skills/<id>/` | Cursor active or default |
+| `.claude/skills/<id>/` | Claude Code, OpenCode, Antigravity, Cline, or default |
 | `.windsurf/skills/<id>/` | Windsurf active |
-| `.devin/skills/<id>/` | Devin CLI active |
-| `.agents/skills/<id>/` | **OpenAI Codex active** (Codex official repo skill path) |
+| `.github/skills/<id>/` | Copilot active |
+| `.opencode/skills/<id>/` | OpenCode active |
+| `.cline/skills/<id>/` | Cline active |
+| `.devin/skills/<id>/` | Devin active |
+| `.antigravity/skills/<id>/` | Antigravity active |
 
-**Codex-only note:** Codex does not use `.codex/skills/` in the repo. Skills → `.agents/skills/<id>/`. Stack rules → summarize into root `AGENTS.md` (append only; never overwrite without confirmation).
+**Codex:** only needs `.agents/skills/` (official path). No `.codex/skills/` in repo.
 
-### From `awesome-cursorrules` (`rules/*.mdc`)
+---
+
+## Deploy: `.mdc` / `.cursorrules` rules
 
 | Target | Transform |
 |--------|-----------|
-| `.cursor/rules/<name>.mdc` | As-is (fix frontmatter if needed) |
-| `.windsurf/rules/<name>.md` | Body only if tool rejects YAML; keep sections |
-| `.continue/rules/<name>.md` | Keep YAML frontmatter; add `name`, `description`, `globs` |
-| `.roo/rules/<name>.md` | Markdown body + short header |
+| `.cursor/rules/<name>.mdc` | As-is |
+| `.windsurf/rules/<name>.md` | Map frontmatter → `trigger` / `globs` |
+| `.continue/rules/<name>.md` | Add `name`, `description`, `globs`, `alwaysApply` |
+| `.roo/rules/<name>.md` | Markdown + header |
 | `.amazonq/rules/<name>.md` | Plain Markdown |
-| `.augment/rules/<name>.md` | Plain Markdown + optional frontmatter `type: agent_requested` |
-| `.kiro/steering/<name>.md` | Plain Markdown; optional `inclusion: fileMatch` from globs |
-| Root `AGENTS.md` (append) | **Codex active:** summarize key conventions as Markdown bullets — append only |
+| `.augment/rules/<name>.md` | + optional `type: agent_requested` |
+| `.kiro/steering/<name>.md` | + optional `inclusion: fileMatch` |
+| `.github/instructions/<name>.instructions.md` | Copilot path-specific; `applyTo:` globs |
+| `.github/copilot-instructions.md` | Copilot repo-wide (append) |
+| `AGENTS.md` | Codex, Roo, Zed, Junie, Augment — **append bullets only** |
+| `GEMINI.md` | Gemini CLI — append |
+| `CONVENTIONS.md` | Aider — append |
+| `.rules` | Zed-only projects |
 
-### From `awesome-clinerules` (`rules/*/.cursorrules`)
+---
 
-Same as `.mdc` row, but convert to `.mdc` for Cursor and to Markdown for other rule stores.
+## Context files (append only unless empty + user OK)
 
-### From `awesome-cursor-skills` (`resources/<name>/`)
+| File | Agents |
+|------|--------|
+| `AGENTS.md` | Codex, Copilot, Roo, Zed, Windsurf, Junie, Augment |
+| `GEMINI.md` | Gemini CLI |
+| `CLAUDE.md` | Claude Code |
+| `CONVENTIONS.md` | Aider |
+| `.github/copilot-instructions.md` | Copilot |
 
-Install to `.cursor/skills/<name>/` and mirror to `.agents/skills/<name>/` (and other active `SKILL.md` paths).
+---
 
-### Context files (optional, do not overwrite without confirmation)
+## Global paths — never write during project setup
 
-| File | Use |
-|------|-----|
-| `AGENTS.md` | Append a short **“Agent context”** section only if missing or user asks |
-| `GEMINI.md` | Same — optional stack summary for Gemini CLI |
-| `CLAUDE.md` | Optional pointer to `.claude/skills/` for Claude Code users |
-| `CONVENTIONS.md` | Aider only — high-level stack bullets, not full skill dumps |
+`~/.copilot/skills/` · `~/.agents/skills/` · `~/.claude/skills/` · `~/.config/opencode/skills/` · `~/.codeium/windsurf/skills/` · `~/.config/devin/skills/` · `~/.roo/rules/` · `~/.gemini/GEMINI.md` · `~/.codex/AGENTS.md` · `~/.kiro/steering/` · `~/.continue/rules/` · `~/.augment/rules/` · `~/.cline/skills/`
 
 ---
 
 ## `.gitignore` block (STEP 6)
-
-Append once if not already present:
 
 ```gitignore
 # AI agent context (agent-rules-auto-setup)
@@ -124,28 +124,30 @@ Append once if not already present:
 .kiro/steering/
 ```
 
-Do **not** ignore `AGENTS.md`, `GEMINI.md`, or `CLAUDE.md` unless the team explicitly wants generated context files untracked.
+Do **not** ignore `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `.github/copilot-instructions.md` unless team wants that.
 
 ---
 
-## Official documentation links
+## Official documentation
 
 | Agent | Docs |
 |-------|------|
-| Agent Skills spec | https://agentskills.io/specification |
-| AGENTS.md standard | https://agents.md/ |
-| Cursor | https://cursor.com/docs |
+| Agent Skills | https://agentskills.io/specification |
+| AGENTS.md | https://agents.md/ |
+| Cursor rules | https://cursor.com/docs/context/rules |
+| Claude Code skills | https://docs.anthropic.com/en/docs/claude-code/skills |
 | Windsurf skills | https://docs.windsurf.com/windsurf/cascade/skills |
-| Claude Code | https://docs.anthropic.com/en/docs/claude-code |
-| GitHub Copilot skills | https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills |
+| Windsurf rules | https://docs.windsurf.com/windsurf/cascade/memories |
+| Copilot skills | https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills |
+| Copilot instructions | https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot |
 | OpenAI Codex | https://developers.openai.com/codex/concepts/customization |
-| OpenCode | https://opencode.ai/docs/skills |
+| OpenCode skills | https://opencode.ai/docs/skills |
 | Gemini CLI | https://geminicli.com/docs/cli/gemini-md |
 | Continue rules | https://docs.continue.dev/customize/deep-dives/rules |
 | Roo Code | https://docs.roocode.com/features/custom-instructions |
+| Cline skills | https://docs.cline.bot/features/skills |
 | Zed rules | https://zed.dev/docs/ai/rules |
 | Amazon Q rules | https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/context-project-rules.html |
 | Augment rules | https://docs.augmentcode.com/cli/rules |
-| Junie | https://junie.jetbrains.com/docs/guidelines-and-memory.html |
 | Kiro steering | https://kiro.dev/docs/steering/ |
 | Devin skills | https://cli.devin.ai/docs/extensibility/skills/overview |
