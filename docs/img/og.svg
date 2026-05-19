@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#12121a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="50%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="0%" r="70%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="60" y="60" width="80" height="80" rx="16" fill="url(#accent)"/>
+  <text x="100" y="115" text-anchor="middle" font-size="48" fill="#fff">�</text>
+  <text x="160" y="95" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="#9898a8">Agent Context Auto-Setup</text>
+  <text x="60" y="200" font-family="system-ui,-apple-system,sans-serif" font-size="56" font-weight="800" fill="#f0f0f5">l� \ \</text>
+  <text x="60" y="280" font-family="system-ui,-apple-system,sans-serif" font-size="56" font-weight="800" fill="url(#accent)">SKILL.md � �Y</text>
+  <text x="60" y="360" font-family="system-ui,-apple-system,sans-serif" font-size="56" font-weight="800" fill="#f0f0f5">�� $X &amp; �</text>
+  <text x="60" y="430" font-family="system-ui,-apple-system,sans-serif" font-size="28" fill="#9898a8">Cursor � Claude Code � Codex � 18+ AI �l</text>
+  <rect x="60" y="480" width="320" height="56" rx="12" fill="url(#accent)"/>
+  <text x="220" y="518" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="24" font-weight="700" fill="#fff">No Code. Just Prompt.</text>
+  <text x="1140" y="600" text-anchor="end" font-family="system-ui,-apple-system,sans-serif" font-size="20" fill="#6366f1">claudianus.github.io</text>
+</svg>

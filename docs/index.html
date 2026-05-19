@@ -9,6 +9,14 @@
   <meta property="og:description" content="프롬프트 한 줄 → 프로젝트 맞춤 SKILL.md·규칙 설치·정리. 바이브코더도 OK.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://claudianus.github.io/agent-rules-auto-setup/">
+  <meta property="og:image" content="https://claudianus.github.io/agent-rules-auto-setup/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Agent Context Auto-Setup — 프롬프트 한 줄로 SKILL.md·규칙 자동 설치">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agent Context Auto-Setup">
+  <meta name="twitter:description" content="프롬프트 한 줄 → 프로젝트 맞춤 SKILL.md·규칙 설치·정리. 바이브코더도 OK.">
+  <meta name="twitter:image" content="https://claudianus.github.io/agent-rules-auto-setup/img/og.png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="css/style.css">
@@ -48,10 +56,9 @@
           설치하고 정리해 드립니다
         </h1>
         <p class="hero-detail">
-          AI 코딩 도구가 내 프로젝트(Next.js, Python, React 등)를 읽고 → 필요한 규칙·스킬만 골라서 →
-          Cursor · Claude Code · Codex · Windsurf · Copilot 등 쓰는 폴더에 자동으로 넣어 줍니다.
-          파일 직접 찾아다운받을 필요 없음.
+          프로젝트를 읽고, 스택에 맞는 규칙·스킬만 골라 쓰는 AI 도구 폴더에 넣어 줍니다.
         </p>
+        <p class="hero-sub">터미널 없음 · 레포 연 채로 AI 채팅만 하면 됩니다</p>
         <ul class="hero-bullets">
           <li><strong>설치</strong> — 스택에 맞는 SKILL.md·규칙 자동 다운로드</li>
           <li><strong>정리</strong> — 안 쓰는 규칙 제거는 <em>동의 후에만</em></li>
@@ -109,6 +116,19 @@
                 <p>설치 목록 확인<br>→ 완료!</p>
               </div>
             </div>
+            <p class="glossary-line">
+              <strong>규칙</strong> = 이 프로젝트 코딩 방식 ·
+              <strong>스킬</strong> = 특정 작업 할 때 따라 할 절차
+            </p>
+            <details class="chat-preview">
+              <summary>💬 AI가 이렇게 말해요 (미리보기)</summary>
+              <div class="chat-thread">
+                <p class="chat-bubble ai"><span class="chat-label">AI</span> 프로젝트가 Next.js + TypeScript 같아요. 기존 규칙 볼게요.</p>
+                <p class="chat-bubble ai"><span class="chat-label">AI</span> 설치 목록 12개예요. 빼고 싶은 <strong>번호</strong> 있으면 말해주세요. 없으면 진행할게요.</p>
+                <p class="chat-bubble user"><span class="chat-label">나</span> 3번 빼줘</p>
+                <p class="chat-bubble ai"><span class="chat-label">AI</span> 완료! 요약은 아래예요.</p>
+              </div>
+            </details>
           </div>
         </div>
       </div>
@@ -120,8 +140,7 @@
         <span class="section-label">왜 필요한가요?</span>
         <h2 class="section-title">AI가 이상한 코드 짜는 이유</h2>
         <p class="section-desc">
-          AI는 똑똑하지만, 프로젝트 맥락(스택·규칙)이 없거나 낡으면 엉뚱한 코드를 씁니다.
-          보통은 규칙 파일을 직접 찾아서 폴더에 넣어야 하는데 — 귀찮고, 스택 바뀌면 또 outdated.
+          맥락이 없거나 낡으면 AI가 엉뚱한 코드를 씁니다. 규칙 파일을 직접 찾아 넣는 수고를 줄여 줍니다.
         </p>
         <div class="compare-grid">
           <div class="compare-card bad">
@@ -150,12 +169,30 @@
     <section id="how" class="section">
       <div class="container">
         <span class="section-label">작동 원리</span>
-        <h2 class="section-title">AI가 하는 8단계</h2>
+        <h2 class="section-title">3가지만 기억하세요</h2>
         <p class="section-desc">
-          복잡해 보여도 걱정 마세요. 프롬프트만 넣으면 AI가 아래를 순서대로 진행합니다.
-          중간에 설치 목록을 보여주니, 마음에 안 드는 항목만 빼달라고 하면 됩니다.
+          ① 프로젝트 읽기 → ② 설치 목록에서 빼고 싶은 번호만 말하기 → ③ 맞는 폴더에 자동 설치
         </p>
-        <div class="steps-grid">
+        <div class="summary-grid">
+          <article class="summary-card">
+            <div class="summary-num">1</div>
+            <h3>프로젝트 읽기</h3>
+            <p>package.json, README 등으로 Next.js·Python 같은 스택을 파악합니다.</p>
+          </article>
+          <article class="summary-card">
+            <div class="summary-num">2</div>
+            <h3>목록 확인</h3>
+            <p>맞는 규칙·스킬 목록을 번호로 보여줍니다. 빼고 싶은 번호만 말하면 됩니다.</p>
+          </article>
+          <article class="summary-card">
+            <div class="summary-num">3</div>
+            <h3>자동 설치</h3>
+            <p>Cursor면 <code>.cursor/</code>, Codex면 <code>.agents/skills/</code> 등 알맞은 폴더에 넣습니다.</p>
+          </article>
+        </div>
+        <details class="steps-details">
+          <summary>자세히: AI가 하는 8단계</summary>
+          <div class="steps-grid">
           <article class="step-card">
             <div class="step-num">1</div>
             <div class="step-content">
@@ -213,6 +250,7 @@
             </div>
           </article>
         </div>
+        </details>
       </div>
     </section>
 
@@ -225,6 +263,25 @@
           쓰는 도구를 AI가 자동 감지해서 맞는 폴더에 설치합니다.
           아무것도 없으면 Cursor + .agents/skills/ 기본 설치.
         </p>
+
+        <div class="agent-paths">
+          <h3 class="agent-paths-title">자주 쓰는 도구 — 파일이 생기는 곳</h3>
+          <div class="path-cards">
+            <div class="path-card">
+              <strong>Cursor</strong>
+              <code>.cursor/rules/</code> · <code>.cursor/skills/</code>
+            </div>
+            <div class="path-card">
+              <strong>Claude Code</strong>
+              <code>.claude/skills/</code> · <code>CLAUDE.md</code> (덮어쓰기 안 함)
+            </div>
+            <div class="path-card">
+              <strong>Codex</strong>
+              <code>.agents/skills/</code> · <code>AGENTS.md</code>
+              <span class="path-note">.codex/skills/ 아님</span>
+            </div>
+          </div>
+        </div>
 
         <div class="agent-category">
           <h3>IDE / 에디터</h3>
@@ -274,7 +331,7 @@
 
         <div class="faq-list">
           <div class="faq-item">
-            <button type="button" class="faq-q">
+            <button type="button" class="faq-q" aria-expanded="false">
               코딩 몰라도 쓸 수 있나요?
               <span class="chevron">▼</span>
             </button>
@@ -284,7 +341,7 @@
             </div>
           </div>
           <div class="faq-item">
-            <button type="button" class="faq-q">
+            <button type="button" class="faq-q" aria-expanded="false">
               Cursor 말고 Claude Code도 되나요?
               <span class="chevron">▼</span>
             </button>
@@ -294,7 +351,7 @@
             </div>
           </div>
           <div class="faq-item">
-            <button type="button" class="faq-q">
+            <button type="button" class="faq-q" aria-expanded="false">
               기존 규칙이 지워지나요?
               <span class="chevron">▼</span>
             </button>
@@ -304,18 +361,21 @@
             </div>
           </div>
           <div class="faq-item">
-            <button type="button" class="faq-q">
+            <button type="button" class="faq-q" aria-expanded="false">
               어디서 규칙을 가져오나요?
               <span class="chevron">▼</span>
             </button>
             <div class="faq-a">
               4개 공식 GitHub 레지스트리만 사용합니다:
-              awesome-cursorrules, antigravity-awesome-skills, awesome-clinerules, awesome-cursor-skills.
+              <a href="https://github.com/PatrickJS/awesome-cursorrules" target="_blank" rel="noopener">awesome-cursorrules</a>,
+              <a href="https://github.com/sickn33/antigravity-awesome-skills" target="_blank" rel="noopener">antigravity-awesome-skills</a>,
+              <a href="https://github.com/JhonMA82/awesome-clinerules" target="_blank" rel="noopener">awesome-clinerules</a>,
+              <a href="https://github.com/spencerpauly/awesome-cursor-skills" target="_blank" rel="noopener">awesome-cursor-skills</a>.
               검증된 소스만 쓰고, 악성 override 문구는 설치 전에 제거합니다.
             </div>
           </div>
           <div class="faq-item">
-            <button type="button" class="faq-q">
+            <button type="button" class="faq-q" aria-expanded="false">
               React → Next.js로 바꿨는데 다시 해야 하나요?
               <span class="chevron">▼</span>
             </button>
@@ -325,7 +385,34 @@
             </div>
           </div>
           <div class="faq-item">
-            <button type="button" class="faq-q">
+            <button type="button" class="faq-q" aria-expanded="false">
+              AI가 내 도구를 어떻게 알아요?
+              <span class="chevron">▼</span>
+            </button>
+            <div class="faq-a">
+              지금 대화 중인 제품(Cursor 채팅, Claude Code 등)과 프로젝트 폴더(.cursor/, .claude/ 등)를 자동으로 감지합니다.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false">
+              설치 목록에서 3번만 빼고 싶어요
+              <span class="chevron">▼</span>
+            </button>
+            <div class="faq-a">
+              AI가 보여준 번호만 말하면 됩니다. 예: <strong>「3번 빼줘」</strong>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false">
+              Codex인데 .codex/skills/에 안 깔려요
+              <span class="chevron">▼</span>
+            </button>
+            <div class="faq-a">
+              정상입니다. Codex 공식 경로는 <code>.agents/skills/</code>와 <code>AGENTS.md</code>입니다.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false">
               .gitignore에 뭐가 추가되나요?
               <span class="chevron">▼</span>
             </button>
@@ -362,6 +449,12 @@
       </div>
     </div>
   </footer>
+
+  <aside class="sticky-copy" id="sticky-copy" aria-label="프롬프트 빠른 복사">
+    <button type="button" class="btn btn-primary sticky-copy-btn" data-copy>
+      <span class="btn-label">📋 프롬프트 복사</span>
+    </button>
+  </aside>
 
   <script src="js/main.js"></script>
 </body>

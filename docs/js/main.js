@@ -4,17 +4,27 @@ const SETUP_PROMPT =
 const promptEl = document.getElementById("setup-prompt");
 if (promptEl) promptEl.textContent = SETUP_PROMPT;
 
-async function copyPrompt(btn) {
-  try {
-    await navigator.clipboard.writeText(SETUP_PROMPT);
+function flashAllCopyButtons() {
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
     const label = btn.querySelector(".btn-label");
-    const orig = label.textContent;
+    if (!label) return;
+    if (!label.dataset.orig) label.dataset.orig = label.textContent;
     btn.classList.add("copied");
     label.textContent = "복사 완료!";
-    setTimeout(() => {
+  });
+  setTimeout(() => {
+    document.querySelectorAll("[data-copy]").forEach((btn) => {
       btn.classList.remove("copied");
-      label.textContent = orig;
-    }, 2200);
+      const label = btn.querySelector(".btn-label");
+      if (label?.dataset.orig) label.textContent = label.dataset.orig;
+    });
+  }, 2200);
+}
+
+async function copyPrompt() {
+  try {
+    await navigator.clipboard.writeText(SETUP_PROMPT);
+    flashAllCopyButtons();
   } catch {
     const ta = document.createElement("textarea");
     ta.value = SETUP_PROMPT;
@@ -22,20 +32,53 @@ async function copyPrompt(btn) {
     ta.select();
     document.execCommand("copy");
     document.body.removeChild(ta);
-    btn.querySelector(".btn-label").textContent = "복사 완료!";
+    flashAllCopyButtons();
   }
 }
 
 document.querySelectorAll("[data-copy]").forEach((btn) => {
-  btn.addEventListener("click", () => copyPrompt(btn));
+  btn.addEventListener("click", () => copyPrompt());
 });
+
+const stickyCopy = document.getElementById("sticky-copy");
+const startSection = document.getElementById("start");
+if (stickyCopy && startSection) {
+  const mq = window.matchMedia("(max-width: 768px)");
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!mq.matches) {
+        stickyCopy.classList.remove("is-visible");
+        document.body.classList.remove("has-sticky-copy");
+        return;
+      }
+      const show = !entry.isIntersecting;
+      stickyCopy.classList.toggle("is-visible", show);
+      document.body.classList.toggle("has-sticky-copy", show);
+    },
+    { threshold: 0, rootMargin: "-72px 0px 0px 0px" }
+  );
+  observer.observe(startSection);
+  mq.addEventListener("change", () => {
+    if (!mq.matches) {
+      stickyCopy.classList.remove("is-visible");
+      document.body.classList.remove("has-sticky-copy");
+    }
+  });
+}
 
 document.querySelectorAll(".faq-q").forEach((btn) => {
   btn.addEventListener("click", () => {
     const item = btn.closest(".faq-item");
     const wasOpen = item.classList.contains("open");
-    document.querySelectorAll(".faq-item").forEach((i) => i.classList.remove("open"));
-    if (!wasOpen) item.classList.add("open");
+    document.querySelectorAll(".faq-item").forEach((i) => {
+      i.classList.remove("open");
+      const q = i.querySelector(".faq-q");
+      if (q) q.setAttribute("aria-expanded", "false");
+    });
+    if (!wasOpen) {
+      item.classList.add("open");
+      btn.setAttribute("aria-expanded", "true");
+    }
   });
 });
 
