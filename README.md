@@ -6,6 +6,7 @@
 ![Zero Config](https://img.shields.io/badge/Installation-Zero__Config-2ea44f?style=for-the-badge)
 ![Cursor](https://img.shields.io/badge/IDE-Cursor-black?style=for-the-badge&logo=cursor)
 ![Claude Code](https://img.shields.io/badge/CLI-Claude_Code-d46c59?style=for-the-badge&logo=anthropic)
+![Codex](https://img.shields.io/badge/CLI-Codex-412991?style=for-the-badge&logo=openai)
 ![Windsurf](https://img.shields.io/badge/IDE-Windsurf-0ea5e9?style=for-the-badge)
 [![Website](https://img.shields.io/badge/📖_Guide-GitHub_Pages-8b5cf6?style=for-the-badge)](https://claudianus.github.io/agent-rules-auto-setup/)
 
