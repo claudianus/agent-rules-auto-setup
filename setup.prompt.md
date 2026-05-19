@@ -115,7 +115,9 @@ You **MUST** query and harvest candidates from **all four** repositories below. 
 2. Read dependency manifests (`package.json`, `requirements.txt`, `pyproject.toml`, `go.mod`, etc.) AND architectural documents (`README.md`, `ARCHITECTURE.md`, etc.) to deduce libraries, domain, and design patterns.
 3. Establish a mental model of conventions, architecture, and core frameworks.
 4. Output an explicit **stack keyword list** (e.g. `nextjs`, `typescript`, `tailwind`, `postgresql`) — you will use it in STEP 3.
-5. **Detect active agents** using [agents.md](https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/agents.md): existing dirs, config files (`opencode.json`, `.continue/config.yaml`, etc.), or user-stated tools. List which agents are **active**. If none detected, use **default fan-out** (`.agents/skills/`, `.cursor/rules/`, `.cursor/skills/`).
+5. **Detect active agents** using [agents.md](https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/agents.md): existing dirs, config files (`opencode.json`, `.continue/config.yaml`, etc.), or user-stated tools. List which agents are **active**.
+   - **Codex session rule:** If you are **OpenAI Codex** (this chat/session), or the user names Codex, mark **Codex active** even when `.codex/` is missing.
+   - If none detected, use **default fan-out** (`.agents/skills/`, `.cursor/rules/`, `.cursor/skills/`).
 
 #### STEP 2: Context Review
 
@@ -154,12 +156,24 @@ You **MUST** browse each whitelisted registry thoroughly — do not guess filena
 
 Install every row in the approved manifest by fetching from the whitelisted repo only. Follow the **full deploy matrix** in [agents.md](https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/agents.md) for each active agent.
 
+#### Codex (OpenAI) — explicit install paths
+
+When **Codex is active**, use these paths (official: [Codex customization](https://developers.openai.com/codex/concepts/customization)):
+
+| Content type | Project path | Notes |
+|--------------|--------------|-------|
+| Skills (`SKILL.md` + folder) | `.agents/skills/<name>/` | **Primary Codex skill path.** Copy full skill directory. Always install here when Codex is active. |
+| Project guidance | `AGENTS.md` (repo root) | Append a short **Agent context** section with stack summary + pointer to `.agents/skills/` — only if missing, empty, or user agrees. **Do not overwrite** existing content. |
+| Rules from `.mdc` / `.cursorrules` | Summarize into `AGENTS.md` | Codex does not read `.mdc`. Extract key conventions as Markdown bullets under `AGENTS.md`; do not copy raw `.mdc` frontmatter. |
+
+**Do not write during project setup:** `~/.codex/AGENTS.md`, `~/.agents/skills/` (global-only).
+
 **Summary (fan-out to all active agents):**
 
 | Source | Primary targets | Notes |
 |--------|-----------------|-------|
 | `awesome-cursorrules` → `rules/*.mdc` | `.cursor/rules/`, `.windsurf/rules/`, `.continue/rules/`, `.roo/rules/`, `.amazonq/rules/`, `.augment/rules/`, `.kiro/steering/` | Transform per agents.md |
-| `antigravity-awesome-skills` → `skills/<id>/` | **Always** `.agents/skills/<id>/`; plus every active `SKILL.md` path (`.cursor/skills/`, `.claude/skills/`, `.github/skills/`, `.windsurf/skills/`, `.opencode/skills/`, `.devin/skills/`, etc.) | Copy full skill folder |
+| `antigravity-awesome-skills` → `skills/<id>/` | **Always** `.agents/skills/<id>/`; plus every active `SKILL.md` path (`.cursor/skills/`, `.claude/skills/`, `.github/skills/`, `.windsurf/skills/`, `.opencode/skills/`, `.devin/skills/`, etc.) | Copy full skill folder. **Codex reads `.agents/skills/`** |
 | `awesome-clinerules` → `rules/*/.cursorrules` | Same rule targets as `.mdc` row | Convert to `.mdc` or Markdown per agent |
 | `awesome-cursor-skills` → `resources/<name>/` | `.cursor/skills/<name>/` + `.agents/skills/<name>/` + other active skill dirs | Standard `SKILL.md` layout |
 
@@ -172,7 +186,10 @@ Install every row in the approved manifest by fetching from the whitelisted repo
 
 #### STEP 5: Context Maintenance Reminder
 
-1. Create `.cursor/rules/000-context-maintenance.mdc` and/or `.claude/skills/context-maintenance/SKILL.md` (if not already present).
+1. Create maintenance reminder in at least one path for each **active** agent:
+   - Cursor: `.cursor/rules/000-context-maintenance.mdc`
+   - Claude Code: `.claude/skills/context-maintenance/SKILL.md`
+   - **Codex:** `.agents/skills/context-maintenance/SKILL.md` and/or a short bullet in root `AGENTS.md`
 2. Include: *"If the tech stack evolves or massive refactoring occurs, proactively suggest reviewing and updating agent context rules. If the user agrees, fetch and follow https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/setup.prompt.md again."*
 
 #### STEP 6: Git-Safety Check
