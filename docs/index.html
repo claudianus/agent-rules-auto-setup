@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Context Auto-Setup — AI 코딩 어시스턴트 자동 설정</title>
+  <meta name="description" content="코드 없이 프롬프트 한 줄로 Cursor, Claude Code, Windsurf 등 AI 코딩 도구에 맞는 규칙과 스킬을 자동 설치하세요.">
+  <meta property="og:title" content="Agent Context Auto-Setup">
+  <meta property="og:description" content="No Code. Just Prompt. — 바이브코더를 위한 AI 컨텍스트 자동 설정">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://claudianus.github.io/agent-rules-auto-setup/">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <div class="bg-mesh" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚡</span>
+        Agent Auto-Setup
+      </a>
+      <button class="menu-toggle" aria-label="메뉴">☰</button>
+      <nav class="nav">
+        <a href="#start">시작하기</a>
+        <a href="#how">작동 원리</a>
+        <a href="#agents">지원 도구</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/claudianus/agent-rules-auto-setup" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          No Code. Just Prompt.
+        </div>
+        <h1>
+          AI 코딩 도구,<br>
+          <span class="gradient-text">한 줄 프롬프트</span>로 똑똑하게
+        </h1>
+        <p class="hero-sub">
+          Cursor, Claude Code, Windsurf… 쓰는 AI에게 규칙·스킬 맞춤 설치.
+          파일 찾아다운받고 폴더에 넣을 필요 없음. 복붙 → 엔터 → 끝.
+        </p>
+        <div class="hero-tags">
+          <span class="tag">Zero Config</span>
+          <span class="tag">18+ AI 도구</span>
+          <span class="tag">4개 공식 레지스트리</span>
+          <span class="tag">바이브코더 OK</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#start" class="btn btn-primary">지금 바로 시작 ↓</a>
+          <a href="https://github.com/claudianus/agent-rules-auto-setup" class="btn btn-ghost" target="_blank" rel="noopener">GitHub ⭐</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Copy prompt -->
+    <section id="start" class="prompt-section">
+      <div class="container">
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <h2><span>👇</span> 이 프롬프트를 복사하세요</h2>
+            <span class="tag">30초면 끝</span>
+          </div>
+          <div class="prompt-body">
+            <div class="prompt-intro">
+              <p>
+                <strong>Cursor</strong> · <strong>Claude Code</strong> · <strong>Windsurf</strong> · <strong>Copilot</strong> 등
+                쓰는 AI 채팅창에 아래 문장을 <strong>그대로 붙여넣고 Enter</strong>만 누르세요.
+                AI가 알아서 프로젝트 분석 → 규칙 설치까지 해줍니다.
+              </p>
+            </div>
+            <pre class="prompt-box" id="setup-prompt"></pre>
+            <div class="copy-row">
+              <button type="button" class="btn btn-primary copy-btn" data-copy>
+                <span class="btn-label">📋 프롬프트 복사하기</span>
+              </button>
+              <a href="https://raw.githubusercontent.com/claudianus/agent-rules-auto-setup/master/setup.prompt.md" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">전체 프롬프트 보기</a>
+            </div>
+            <div class="prompt-steps-mini">
+              <div class="mini-step">
+                <div class="mini-step-num">1</div>
+                <p>위 버튼으로<br>프롬프트 복사</p>
+              </div>
+              <div class="mini-step">
+                <div class="mini-step-num">2</div>
+                <p>AI 채팅창에<br>붙여넣기</p>
+              </div>
+              <div class="mini-step">
+                <div class="mini-step-num">3</div>
+                <p>Enter 누르고<br>AI 따라가기</p>
+              </div>
+              <div class="mini-step">
+                <div class="mini-step-num">4</div>
+                <p>설치 목록 확인<br>→ 완료!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem / Solution -->
+    <section class="section">
+      <div class="container">
+        <span class="section-label">왜 필요한가요?</span>
+        <h2 class="section-title">AI가 이상한 코드 짜는 이유</h2>
+        <p class="section-desc">
+          AI는 똑똑하지만, 프로젝트 맥락(스택·규칙)이 없거나 낡으면 엉뚱한 코드를 씁니다.
+          보통은 규칙 파일을 직접 찾아서 폴더에 넣어야 하는데 — 귀찮고, 스택 바뀌면 또 outdated.
+        </p>
+        <div class="compare-grid">
+          <div class="compare-card bad">
+            <h3>😵 예전 방식</h3>
+            <ul>
+              <li>GitHub에서 .mdc 파일 검색</li>
+              <li>어디 폴더에 넣는지 헷갈림</li>
+              <li>Next.js → React 바꾸면 규칙 또 찾기</li>
+              <li>규칙이 쌓이면 AI 컨텍스트 비대해짐</li>
+            </ul>
+          </div>
+          <div class="compare-card good">
+            <h3>⚡ Auto-Setup</h3>
+            <ul>
+              <li>프롬프트 한 줄 → AI가 알아서 처리</li>
+              <li>내 프로젝트 스택에 맞는 규칙만 골라줌</li>
+              <li>Cursor, Claude, Copilot 등 자동 감지</li>
+              <li>낡은 규칙 정리 제안 (삭제는 내 동의 후)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow -->
+    <section id="how" class="section">
+      <div class="container">
+        <span class="section-label">작동 원리</span>
+        <h2 class="section-title">AI가 하는 8단계</h2>
+        <p class="section-desc">
+          복잡해 보여도 걱정 마세요. 프롬프트만 넣으면 AI가 아래를 순서대로 진행합니다.
+          중간에 설치 목록을 보여주니, 마음에 안 드는 항목만 빼달라고 하면 됩니다.
+        </p>
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3><span class="step-emoji">🕵️</span>프로젝트 분석</h3>
+              <p>package.json, README 등을 읽고 Next.js, Python, Tailwind 같은 스택 키워드를 뽑아냅니다.</p>
+            </div>
+          </article>
+          <article class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3><span class="step-emoji">🧹</span>기존 규칙 점검</h3>
+              <p>이미 있는 규칙 중 outdated·충돌 나는 것을 찾아 제거 제안. <strong>동의 없이 삭제 안 함.</strong></p>
+            </div>
+          </article>
+          <article class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3><span class="step-emoji">📥</span>레지스트리 검색</h3>
+              <p>4개 공식 GitHub 레지스트리에서 스택에 맞는 규칙·스킬을 찾아 점수 매기고 목록 작성 (최대 50개).</p>
+            </div>
+          </article>
+          <article class="step-card">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3><span class="step-emoji">⚙️</span>자동 설치</h3>
+              <p>목록에 이의 없으면 .cursor/rules/, .agents/skills/ 등 알맞은 폴더에 파일을 깔아줍니다.</p>
+            </div>
+          </article>
+          <article class="step-card">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h3><span class="step-emoji">🧬</span>유지보수 리마인더</h3>
+              <p>스택이 바뀌면 다시 setup 돌리라는 메타 규칙을 심어줍니다.</p>
+            </div>
+          </article>
+          <article class="step-card">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h3><span class="step-emoji">🛡️</span>Git 안전</h3>
+              <p>.gitignore에 .cursor/, .claude/ 등 에이전트 폴더를 자동 추가 (이미 있으면 건너뜀).</p>
+            </div>
+          </article>
+          <article class="step-card">
+            <div class="step-num">7</div>
+            <div class="step-content">
+              <h3><span class="step-emoji">📋</span>최종 리포트</h3>
+              <p>뭘 설치했는지, 어디서 가져왔는지 표로 정리해서 보여줍니다.</p>
+            </div>
+          </article>
+          <article class="step-card">
+            <div class="step-num">8</div>
+            <div class="step-content">
+              <h3><span class="step-emoji">🙋</span>수정 루프</h3>
+              <p>"이거 빼줘", "React 규칙 더 넣어줘" 같이 말하면 바로 반영합니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agents -->
+    <section id="agents" class="section">
+      <div class="container">
+        <span class="section-label">지원 도구</span>
+        <h2 class="section-title">18개 이상 AI 코딩 도구</h2>
+        <p class="section-desc">
+          쓰는 도구를 AI가 자동 감지해서 맞는 폴더에 설치합니다.
+          아무것도 없으면 Cursor + .agents/skills/ 기본 설치.
+        </p>
+
+        <div class="agent-category">
+          <h3>IDE / 에디터</h3>
+          <div class="agents-grid">
+            <div class="agent-chip"><span class="icon">◆</span> Cursor</div>
+            <div class="agent-chip"><span class="icon">🌊</span> Windsurf</div>
+            <div class="agent-chip"><span class="icon">⚡</span> Zed</div>
+            <div class="agent-chip"><span class="icon">🧠</span> JetBrains Junie</div>
+            <div class="agent-chip"><span class="icon">🔧</span> Trae</div>
+            <div class="agent-chip"><span class="icon">🎯</span> Kiro</div>
+            <div class="agent-chip"><span class="icon">➡️</span> Continue</div>
+          </div>
+        </div>
+
+        <div class="agent-category">
+          <h3>CLI / 터미널</h3>
+          <div class="agents-grid">
+            <div class="agent-chip"><span class="icon">🤖</span> Claude Code</div>
+            <div class="agent-chip"><span class="icon">💻</span> OpenAI Codex</div>
+            <div class="agent-chip"><span class="icon">✨</span> Gemini CLI</div>
+            <div class="agent-chip"><span class="icon">📂</span> OpenCode</div>
+            <div class="agent-chip"><span class="icon">🛠</span> Devin</div>
+            <div class="agent-chip"><span class="icon">📝</span> Aider</div>
+          </div>
+        </div>
+
+        <div class="agent-category">
+          <h3>Copilot / 클라우드 / 기타</h3>
+          <div class="agents-grid">
+            <div class="agent-chip"><span class="icon">🐙</span> GitHub Copilot</div>
+            <div class="agent-chip"><span class="icon">☁️</span> Amazon Q</div>
+            <div class="agent-chip"><span class="icon">🔗</span> Cline</div>
+            <div class="agent-chip"><span class="icon">🦘</span> Roo Code</div>
+            <div class="agent-chip"><span class="icon">🚀</span> Antigravity</div>
+            <div class="agent-chip"><span class="icon">📄</span> AGENTS.md 표준</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">바이브코더 FAQ</h2>
+        <p class="section-desc">코딩 잘 몰라도 OK. 자주 묻는 질문만 쏙쏙.</p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button type="button" class="faq-q">
+              코딩 몰라도 쓸 수 있나요?
+              <span class="chevron">▼</span>
+            </button>
+            <div class="faq-a">
+              네. 프롬프트 복사 → AI 채팅에 붙여넣기 → Enter만 하면 됩니다.
+              AI가 파일 읽고, 다운로드하고, 폴더에 넣어줍니다. 터미널 명령어 칠 필요 없어요.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q">
+              Cursor 말고 Claude Code도 되나요?
+              <span class="chevron">▼</span>
+            </button>
+            <div class="faq-a">
+              됩니다. Claude Code, Windsurf, Copilot, Gemini CLI 등 18개 이상 도구를 지원해요.
+              AI가 .claude/, .cursor/, .github/skills/ 같은 폴더를 자동으로 찾아서 설치합니다.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q">
+              기존 규칙이 지워지나요?
+              <span class="chevron">▼</span>
+            </button>
+            <div class="faq-a">
+              <strong>동의 없이 삭제하지 않습니다.</strong> 낡거나 충돌 나는 규칙이 있으면 "이거 지울까요?"라고 먼저 물어봅니다.
+              설치도 목록을 보여준 뒤, 빼고 싶은 항목만 말하면 됩니다.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q">
+              어디서 규칙을 가져오나요?
+              <span class="chevron">▼</span>
+            </button>
+            <div class="faq-a">
+              4개 공식 GitHub 레지스트리만 사용합니다:
+              awesome-cursorrules, antigravity-awesome-skills, awesome-clinerules, awesome-cursor-skills.
+              검증된 소스만 쓰고, 악성 override 문구는 설치 전에 제거합니다.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q">
+              React → Next.js로 바꿨는데 다시 해야 하나요?
+              <span class="chevron">▼</span>
+            </button>
+            <div class="faq-a">
+              스택이 크게 바뀌면 같은 프롬프트를 다시 돌리는 걸 추천합니다.
+              AI가 새 스택에 맞는 규칙을 찾아주고, setup 완료 후 "스택 바뀌면 다시 실행" 리마인더도 심어줍니다.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q">
+              .gitignore에 뭐가 추가되나요?
+              <span class="chevron">▼</span>
+            </button>
+            <div class="faq-a">
+              .cursor/, .claude/, .antigravity/ 같은 AI 설정 폴더가 git에 올라가지 않도록 자동 추가합니다.
+              팀 repo에 개인 AI 설정이 섞이는 걸 방지해요. 이미 있으면 건너뜁니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="container">
+      <div class="cta-banner">
+        <h2>지금 바로 AI를 업그레이드하세요</h2>
+        <p>프롬프트 한 줄이면 프로젝트에 맞는 AI 규칙·스킬이 자동으로 깔립니다.</p>
+        <a href="#start" class="btn btn-primary">프롬프트 복사하러 가기 ↑</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <a href="https://github.com/claudianus/agent-rules-auto-setup" target="_blank" rel="noopener">Agent Context Auto-Setup</a>
+        — MIT · Made for vibe coders
+      </p>
+      <div class="footer-links">
+        <a href="https://github.com/claudianus/agent-rules-auto-setup/blob/master/README.md" target="_blank" rel="noopener">README</a>
+        <a href="https://github.com/claudianus/agent-rules-auto-setup/blob/master/setup.prompt.md" target="_blank" rel="noopener">Setup Prompt</a>
+        <a href="https://github.com/claudianus/agent-rules-auto-setup/blob/master/agents.md" target="_blank" rel="noopener">Agents</a>
+        <a href="https://github.com/claudianus/agent-rules-auto-setup/blob/master/registries.md" target="_blank" rel="noopener">Registries</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
