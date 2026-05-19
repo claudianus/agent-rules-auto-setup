@@ -44,23 +44,37 @@ Usually, developers solve this by manually searching for rule files (`.mdc`), do
 
 **Agent Context Auto-Setup** solves this completely by turning the AI agent into its own context manager.
 
-## 🛠️ How it Works (The Ultimate 7-Step Workflow)
+## 🛠️ How it Works (8-Step Workflow)
 
-By simply feeding the prompt above to your active AI agent, you trigger a native meta-prompt sequence. Your agent safely and interactively:
+By simply feeding the prompt above to your active AI agent, you trigger a meta-prompt sequence. Your agent safely:
 
-1. 🕵️ **Deep Codebase Analysis:** Scans `package.json`, `ARCHITECTURE.md`, and directory trees to deduce your exact tech stack and architectural patterns.
-2. 🧹 **Smart Context Review:** Intelligently identifies obsolete rules that conflict with your stack, and proposes their removal while preserving meta-rules.
-3. 📥 **Open-Source Skill Recommendations:** Recommends highly-curated agent rules from top open-source registries tailored to your specific stack for your approval.
-4. ⚙️ **Multi-Agent Format Deployment:** Translates and safely installs approved rules into your local environment (`.cursor/rules/`, `.claude/skills/`, etc.).
-5. 🧬 **Context Maintenance Reminder:** Plants a meta-rule inside your workspace. If your tech stack evolves later, the agent will proactively suggest reviewing the setup again.
-6. 🛡️ **Git-Safety:** Advises you to cleanly update your `.gitignore` to prevent automation folders from inflating your commit history.
-7. 🙋‍♂️ **Ultra-Readable Feedback Loop:** Outputs a beautifully categorized, strictly 1-line formatted report of what was installed/deleted, and formally requests your final review.
+1. 🕵️ **Deep Codebase Analysis:** Scans manifests and docs; outputs a stack keyword list.
+2. 🧹 **Smart Context Review:** Proposes obsolete rules for removal — **never deletes without your confirmation.**
+3. 📥 **Registry Harvest:** Browses **four whitelisted GitHub registries**, scores matches (max 50), and prints an install manifest.
+4. ⚙️ **Auto-Install (manifest-once):** Unless you object to the manifest in the same turn, fetches raw rules/skills and deploys to `.cursor/`, `.claude/`, etc.
+5. 🧬 **Context Maintenance Reminder:** Plants a meta-rule to re-run setup when the stack changes (with your consent to fetch).
+6. 🛡️ **Git-Safety:** Idempotently updates `.gitignore` for agent context folders.
+7. 📋 **Final Report:** Summary, per-item `repo@path` sources, and one-line categorized context list.
+8. 🙋‍♂️ **Correction Loop:** You can request fixes; the agent updates files immediately.
+
+### Whitelisted registries
+
+The agent **must** search these repos (details in [registries.md](registries.md)):
+
+| Registry | Repository |
+|----------|------------|
+| Cursor rules (`.mdc`) | [PatrickJS/awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules) |
+| Agent skills (`SKILL.md`) | [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) |
+| Cline / legacy rules | [JhonMA82/awesome-clinerules](https://github.com/JhonMA82/awesome-clinerules) |
+| Cursor-native skills | [spencerpauly/awesome-cursor-skills](https://github.com/spencerpauly/awesome-cursor-skills) |
+
+Fallback: [cursor.directory](https://cursor.directory) only when the four repos lack a match.
 
 ## 🤖 Supported Environments
 
 This prompt dynamically adapts itself to your local IDE/CLI tool. Currently verified zero-config platforms include:
 
-- **Cursor IDE** (`.cursor/rules/*.mdc`)
+- **Cursor IDE** (`.cursor/rules/*.mdc`, `.cursor/skills/*/SKILL.md`)
 - **Windsurf** (`.windsurf/rules/*`)
 - **Claude Code CLI** (`.claude/skills/*`)
 - **Cline** (`.cline/skills/*`)
